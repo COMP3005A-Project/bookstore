@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
+    <link rel="stylesheet" href="/css/wet-theme.min.css">
+
     <title>BookStore</title>
   </head>
   <body>
@@ -8,5 +10,12 @@
     <h1>Bookstore</h1>
     <p>Book text is <span th:text="${book.text}"></p>
 
+    <section class="alert alert-success">
+      <h*>The Doors of Stone</h*>
+      <p>Selected Book</p>
+    </section>
+
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="/js/wet-boew.min.js"></script>
 </html>
