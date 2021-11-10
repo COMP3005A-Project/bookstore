@@ -15,6 +15,8 @@ public class IndexController {
 
     Book book = new Book("testText");
     model.addAttribute("book", book);
+    model.addAttribute("module", "shop");
+    model.addAttribute("isAuthenticated", true);
     
     return "index";
   }

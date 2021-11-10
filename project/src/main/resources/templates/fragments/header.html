@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse" th:fragment="header">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse"></button>
+          <a class="navbar-brand" href="#">Look Inna Book</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li th:classappend="${module == 'shop' ? 'active' : ''}">
+              <a href="#" th:href="@{/}">
+                Shop
+              </a>
+            </li>
+            <li th:classappend="${module == 'cart' ? 'active' : ''}">
+              <a href="#" th:href="@{/task}">
+                Cart
+              </a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
+                Logout
+              </a>
+             <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

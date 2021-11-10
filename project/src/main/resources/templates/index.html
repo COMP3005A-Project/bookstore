@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
+    
     <link rel="stylesheet" href="/css/wet-theme.min.css">
-
-    <title>BookStore</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="js/bookTable.js"></script>
+    <title>Look Inna Book</title>
   </head>
   <body>
-
-    <h1>Bookstore</h1>
-    <p>Book text is <span th:text="${book.text}"></p>
-
-    <section class="alert alert-success">
-      <h*>The Doors of Stone</h*>
-      <p>Selected Book</p>
-    </section>
+    <div th:replace="fragments/header :: header">...</div>
+    
+    <div class="container">
+      <table id="books" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Release</th>
+            <th>Price</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>101</td>
+            <td>Name of the Wind</td>
+            <td>Patrick Rothfus</td>
+            <td>2011/04/25</td>
+            <td>$40</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>102</td>
+            <td>Doors of Stone</td>
+            <td>Patrick Rothfus</td>
+            <td>2021/04/25</td>
+            <td>$50</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>103</td>
+            <td>The Way of Kings</td>
+            <td>Brandon Sanderson</td>
+            <td>2017/02/20</td>
+            <td>$50</td>
+            <td>20</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Release</th>
+            <th>Price</th>
+            <th>Stock</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    
 
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="/js/wet-boew.min.js"></script>
 </html>
