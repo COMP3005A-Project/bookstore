@@ -23,9 +23,6 @@ public class IndexController {
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String index(Model model) {
 
-    //TODO: call to book service, which will format the Book objects based on a call to Book repo
-    //Instead test data:
-
     List<Book> books = bookService.getAllBooks();
 
     model.addAttribute("books", books);
