@@ -25,29 +25,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>101</td>
-            <td>Name of the Wind</td>
-            <td>Patrick Rothfus</td>
-            <td>2011/04/25</td>
-            <td>$40</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>102</td>
-            <td>Doors of Stone</td>
-            <td>Patrick Rothfus</td>
-            <td>2021/04/25</td>
-            <td>$50</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>103</td>
-            <td>The Way of Kings</td>
-            <td>Brandon Sanderson</td>
-            <td>2017/02/20</td>
-            <td>$50</td>
-            <td>20</td>
+          <tr th:each="book: ${books}">
+            <td th:text="${book.ISBN}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.release}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.stock}"></td>
           </tr>
         </tbody>
         <tfoot>

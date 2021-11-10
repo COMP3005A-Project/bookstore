@@ -1,20 +1,34 @@
 package ca.bookstore3005.project.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ca.bookstore3005.project.models.Book;
+import ca.bookstore3005.project.services.BookService;
 
 @Controller
 public class IndexController {
 
+  private BookService bookService;
+
+  IndexController(BookService bookService) {
+    this.bookService = bookService;
+  }
+
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String index(Model model) {
 
-    Book book = new Book("testText");
-    model.addAttribute("book", book);
+    //TODO: call to book service, which will format the Book objects based on a call to Book repo
+    //Instead test data:
+
+    List<Book> books = bookService.getAllBooks();
+
+    model.addAttribute("books", books);
     model.addAttribute("module", "shop");
     model.addAttribute("isAuthenticated", true);
     
