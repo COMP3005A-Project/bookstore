@@ -1,23 +1,23 @@
-CREATE TABLE customer
+create table customer
   (
      email                 varchar(30) not null,
      password              varchar(30) not null,
      name                  varchar(30) not null,
      phone                 numeric(10, 0),
-     address_street_num    varchar(30),
+     address_street_num    varchar(10),
      address_street_name   varchar(30),
      address_street_postal varchar(30),
      primary key (email)
   );
 
-CREATE TABLE bank_account
+create table bank_account
   (
      bank_number numeric(10, 0) not null,
      amount      int not null,
      primary key (bank_number)
   );
 
-CREATE TABLE book_order
+create table book_order
   (
      order_id    numeric(10, 0) not null,
      email       varchar(30) not null,
@@ -26,7 +26,7 @@ CREATE TABLE book_order
      foreign key (email) references customer
   );
 
-CREATE TABLE publisher
+create table publisher
   (
      NAME                  varchar(30) not null,
      phone                 numeric(10, 0),
@@ -39,7 +39,7 @@ CREATE TABLE publisher
      foreign key (bank_number) references bank_account
   );
 
-CREATE TABLE book
+create table book
   (
      isbn                 numeric(13, 0) not null,
      title                varchar(30),
@@ -54,7 +54,7 @@ CREATE TABLE book
      foreign key (publisher_name) references publisher
   );
 
-CREATE TABLE books_in_order
+create table books_in_order
   (
      order_id numeric(10, 0) not null,
      isbn     numeric(13, 0) not null,
