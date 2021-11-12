@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  $('#books').DataTable();
+  $('#defaultDT').DataTable();
 } );
