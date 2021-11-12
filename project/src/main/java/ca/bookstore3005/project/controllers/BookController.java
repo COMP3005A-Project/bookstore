@@ -2,15 +2,15 @@ package ca.bookstore3005.project.controllers;
 
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.services.BookService;
 
-@RestController
+@Controller
 public class BookController {
 
   private BookService bookService;
