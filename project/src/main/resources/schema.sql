@@ -5,37 +5,37 @@ create table if not exists customer
      name                  varchar(30) not null,
      phone                 numeric(10, 0),
      address_street_num    varchar(10),
-     address_street_name   varchar(30),
-     address_street_postal varchar(30),
+     address_street_name   varchar(255),
+     address_street_postal varchar(10),
      primary key (email)
   );
 
 create table if not exists bank_account
   (
      bank_number numeric(10, 0) not null,
-     amount      int not null,
+     amount      numeric(38,2) not null,
      primary key (bank_number)
   );
 
 create table if not exists book_order
   (
-     order_id    numeric(10, 0) not null,
+     order_id    serial unique,
      email       varchar(30) not null,
-     shipping_id numeric(10, 0) not null,
+     shipping_id serial unique,
      primary key (order_id),
      foreign key (email) references customer
   );
 
 create table if not exists publisher
   (
-     NAME                  varchar(30) not null,
+     name                  varchar(30) not null,
      phone                 numeric(10, 0),
      bank_number           numeric(10, 0) not null,
      email                 varchar(30) not null,
      address_street_num    varchar(30),
-     address_street_name   varchar(30),
-     address_street_postal varchar(30),
-     primary key (NAME),
+     address_street_name   varchar(255),
+     address_street_postal varchar(10),
+     primary key (name),
      foreign key (bank_number) references bank_account
   );
 
@@ -56,9 +56,9 @@ create table if not exists book
 
 create table if not exists books_in_order
   (
-     order_id numeric(10, 0) not null,
+     order_id serial unique,
      isbn     numeric(13, 0) not null,
-     amount   int not null,
+     amount   numeric(38,2) not null,
      primary key (order_id, isbn),
      foreign key (order_id) references book_order,
      foreign key (isbn) references book
