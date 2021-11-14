@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * View data object used to contruct book table.
+ * View data object used to contruct publisher table.
  */
 @Data
 @AllArgsConstructor
