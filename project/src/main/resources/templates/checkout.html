@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <div th:replace="fragments/scripts :: scripts"></div>
+    <script src="js/defaultDT.js"></script>
+    <title>Look Inna Book</title>
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5 class="panel-title">Checkout Info</h5>
+        <div class="row">
+          <div class="col-md-4">
+            <!-- Shipping and Billing Panel -->
+            <div class="panel panel-default">
+              <header class="panel-heading">
+                <h5 class="panel-title">Shipping & Billing Info</h5>
+              </header>
+              <div class="panel-body">
+                <div class="wb-frmvld">
+                  <form action="#" method="get" id="shipping_info">
+                    <div class="form-group">
+                      <label for="fname" class="required"><span class="field-name">Full name</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="fname" name="fname" type="text" autocomplete="given-name" required="required" data-rule-minlength="2" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email" class="required"><span class="field-name">Email address (yourname@domain.com)</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="email" name="email" type="text" autocomplete="email" required="required" data-rule-minlength="2" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="tel1" class="required"><span class="field-name">Telephone number (including area code)</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="tel1" name="tel1" type="tel" autocomplete="tel" required="required" data-rule-phoneUS="true" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="address" class="required"><span class="field-name">Address</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="address" name="address" type="text" autocomplete="addr" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="city" class="required"><span class="field-name">City</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="city" name="city" type="text" autocomplete="city" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="province" class="required"><span class="field-name">Province</span> <strong class="required">(required)</strong></label>
+                      <select class="form-control" id="province" name="province" required="required">
+                        <option label="Select a province"></option>
+                        <option value="ab">AB</option>
+                        <option value="bc">BC</option>
+                        <option value="mb">MB</option>
+                        <option value="nb">NB</option>
+                        <option value="nl">NL</option>
+                        <option value="ns">NS</option>
+                        <option value="on">ON</option>
+                        <option value="pe">PE</option>
+                        <option value="qc">QC</option>
+                        <option value="sk">SK</option>
+                      </select>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="pcodeca1" class="required"><span class="field-name">Postal code</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="pcodeca1" name="pcodeca1" type="text" autocomplete="postal-code" size="7" maxlength="7" required="required" data-rule-postalCodeCA="true" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <!-- Payment Panel -->
+            <div class="panel panel-default">
+              <header class="panel-heading">
+                <h5 class="panel-title">Payment Info</h5>
+              </header>
+              <div class="panel-body">
+                <div class="wb-frmvld">
+                  <form action="#" method="get" id="shipping_info">
+                    <div class="form-group">
+                      <label for="credit_number"><span class="field-name">Credit Card Number</span></label>
+                      <input class="form-control" id="credit_number" name="credit_number" type="text" data-rule-rangeWords="[16,16]" />
+                    </div>
+                    <div class="form-group">
+                      <label for="expire"><span class="field-name">Expiration Date (MM/YY)</span></label>
+                      <input class="form-control" id="expire" name="expire" type="text" data-rule-rangeWords="[5,5]" />
+                    </div>
+                    <div class="form-group">
+                      <label for="cvc"><span class="field-name">CVC</span></label>
+                      <input class="form-control" id="cvc" name="cvc" type="text" data-rule-rangeWords="[3,3]" />
+                    </div>
+                    <div class="form-group">
+                      <label for="fname"><span class="field-name">Name on card</span> </label>
+                      <input class="form-control" id="fname" name="fname" type="text" autocomplete="given-name" data-rule-minlength="2" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="panel panel-default">
+              <header class="panel-heading">
+                <h5 class="panel-title">Items</h5>
+              </header>
+              <div class="panel-body">
+                <table id="defaultDT" class="display" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="book: ${booksInCart}">
+                      <td th:text="${book.title}"></td>
+                      <td th:text="${book.author}"></td>
+                      <td th:text="${book.price}"></td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Price</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-2">
+            <!-- Buttons -->
+            <div class="text-right">
+              <button id="order" type="button" class="btn btn-primary">Place Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </body>
+</html>

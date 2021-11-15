@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <div th:replace="fragments/scripts :: scripts"></div>
+    <script src="js/defaultDT.js"></script>
+    <title>Look Inna Book</title>
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+    <h1>Your Active Cart</h1>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-body"></div>
+          <table id="defaultDT" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>Select</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Release</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="book: ${booksInCart}">
+                <td><input type="checkbox" id="bookCheck" th:value="${book.ISBN}"></td>
+                <td th:text="${book.ISBN}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.year}"></td>
+                <td th:text="${book.price}"></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Select</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Release</th>
+                <th>Price</th>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="text-left">
+            <button id="remove" type="button" class="btn btn-danger">Remove Items</button>
+          </div>  
+          <div class="text-right">
+            <button id="checkout" type="button" class="btn btn-primary">Proceed to Checkout</button>
+          </div>  
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

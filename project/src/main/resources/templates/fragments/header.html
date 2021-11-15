@@ -17,8 +17,13 @@
               </a>
             </li>
             <li th:classappend="${module == 'cart' ? 'active' : ''}">
-              <a href="#" th:href="@{/task}">
+              <a href="#" th:href="@{/cart}">
                 Cart
+              </a>
+            </li>
+            <li th:classappend="${module == 'checkout' ? 'active' : ''}">
+              <a href="#" th:href="@{/checkout}">
+                Checkout
               </a>
             </li>
           </ul>
