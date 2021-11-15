@@ -1,7 +1,5 @@
 package ca.bookstore3005.project.models;
 
-import java.math.BigDecimal;
-
 import org.springframework.data.annotation.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
+    
     @Id
     private String email;
     private String password;
@@ -21,5 +20,5 @@ public class Customer {
     private String phone;
     private String address_street_num;
     private String address_street_name;
-    private String address_street_postalString;
+    private String address_street_postal;
 }

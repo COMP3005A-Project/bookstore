@@ -1,7 +1,5 @@
 package ca.bookstore3005.project.models;
 
-import java.math.BigDecimal;
-
 import org.springframework.data.annotation.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Publisher {
+
     @Id
     private String name; 
     private String phone;
