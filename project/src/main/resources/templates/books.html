@@ -8,42 +8,44 @@
   <body>
     <div th:replace="fragments/header :: header"></div>
     
-    <div class="container">
-      <table id="defaultDT" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th></th>
-            <th>ISBN</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Release</th>
-            <th>Price</th>
-            <th>Stock</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="book: ${allBooks}">
-            <td><input type="checkbox" id="bookCheck" th:value="${book.ISBN}"></td>
-            <td th:text="${book.ISBN}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.year}"></td>
-            <td th:text="${book.price}"></td>
-            <td th:text="${book.stock}"></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th></th>
-            <th>ISBN</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Release</th>
-            <th>Price</th>
-            <th>Stock</th>
-          </tr>
-        </tfoot>
-      </table>
+    <div class="container panel panel-default">
+      <div class="panel-body">
+        <table id="defaultDT" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ISBN</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Release</th>
+              <th>Price</th>
+              <th>Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="book: ${allBooks}">
+              <td><input type="checkbox" id="bookCheck" th:value="${book.ISBN}"></td>
+              <td th:text="${book.ISBN}"></td>
+              <td th:text="${book.title}"></td>
+              <td th:text="${book.author}"></td>
+              <td th:text="${book.year}"></td>
+              <td th:text="${book.price}"></td>
+              <td th:text="${book.stock}"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th>ISBN</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Release</th>
+              <th>Price</th>
+              <th>Stock</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
     
 
