@@ -12,13 +12,13 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li th:classappend="${module == 'shop' ? 'active' : ''}">
-              <a href="#" th:href="@{/}">
+              <a href="#" th:href="@{/books}">
                 Shop
               </a>
             </li>
             <li th:classappend="${module == 'cart' ? 'active' : ''}">
-              <a href="#" th:href="@{/task}">
-                Cart (<span id="cart_num" th:text="${num_in_cart}"></span>)
+              <a href="#" th:href="@{/cart}">
+                Cart <span id="cart_num" th:text="${num_in_cart}"></span>
               </a>
             </li>
             <li th:classappend="${module == 'checkout' ? 'active' : ''}">

@@ -33,7 +33,7 @@ $(document).ready(function() {
       data: JSON.stringify(dataArray),
   
       success: function(result){
-        $("#cart_num").text(result);
+        $("#cart_num").text("(" + result + ")");
       },
     });
   }

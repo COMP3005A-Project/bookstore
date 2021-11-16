@@ -41,6 +41,10 @@ insert into book (ISBN, publisher_name, stock, title, author, year, price, num_p
 insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher)
 	values ('1234567891237', 'Publisher 3', 13,   'Title 4', 'Author 4', 2020, 125.99, 1123, 21.23);
 
+/* Inserting into user */
+insert into customer (email, password, name, address_street_num, address_street_name, address_street_postal)
+	values ('test.pilot@gmail.com', 'gaben12', 'Gaben', '123', 'Sesame Street', 'K1J6S5');
+
 
 
 

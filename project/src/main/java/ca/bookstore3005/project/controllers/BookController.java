@@ -42,9 +42,9 @@ public class BookController {
     @SuppressWarnings("unchecked")
     List<String> cart = (List<String>) session.getAttribute("cart");
     if (cart != null) {
-      model.addAttribute("num_in_cart", cart.size());
+      model.addAttribute("num_in_cart", String.format("(%s)", String.valueOf(cart.size())));
     } else {
-      model.addAttribute("num_in_cart", 0);
+      model.addAttribute("num_in_cart", "");
     }
     
     return "books";
