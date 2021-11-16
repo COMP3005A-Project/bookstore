@@ -20,12 +20,16 @@ public class CustomerService {
   }
 
   public void addCustomer(Customer customerForm) {
-    customerRepository.addCustomer(customerForm.getEmail(), 
+    customerRepository.addCustomer(customerForm.getName(),
+                                   customerForm.getEmail(), 
                                    customerForm.getPassword(),
                                    customerForm.getPhone(),
                                    customerForm.getAddress_street_name(),
                                    customerForm.getAddress_street_num(),
-                                   customerForm.getAddress_street_postal());
+                                   customerForm.getAddress_street_postal(),
+                                   customerForm.getCity(),
+                                   customerForm.getProvince(),
+                                   customerForm.getCard_number());
   }
     
 }

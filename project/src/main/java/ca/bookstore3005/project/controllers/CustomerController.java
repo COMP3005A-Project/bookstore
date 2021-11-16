@@ -2,6 +2,7 @@ package ca.bookstore3005.project.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,6 +48,29 @@ public class CustomerController {
         attributes.addFlashAttribute("incorrect_credentials", true);
         return new RedirectView("/");
       }
+    }
+
+    @GetMapping("/registration")
+    public String registration(Model model) {
+
+      // pass a Customer to be used in form in the name of user_register
+      model.addAttribute("user_register", new Customer());
+      return "registration";
+    }
+
+    @PostMapping("/registration_signup")
+    public RedirectView registrationView(@Validated @ModelAttribute("user_register") Customer customer) {
+      
+      try {
+            customerService.addCustomer(customer);
+          } 
+      // Checks for duplicates
+      catch (DataIntegrityViolationException e) {
+            return new RedirectView("/registration");
+          }
+      
+       return new RedirectView("/");
+      
     }
     
 }

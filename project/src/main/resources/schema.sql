@@ -3,10 +3,13 @@ create table if not exists customer
      email                 varchar(30) not null,
      password              varchar(30) not null,
      name                  varchar(30) not null,
-     phone                 numeric(10, 0),
+     phone                 varchar(10),
      address_street_num    varchar(10),
      address_street_name   varchar(255),
      address_street_postal varchar(10),
+     city                  varchar(30),
+     province              varchar(2),
+     card_number           varchar(13),
      primary key (email)
   );
 
