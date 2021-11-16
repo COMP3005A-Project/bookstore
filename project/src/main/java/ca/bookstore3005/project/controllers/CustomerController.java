@@ -1,5 +1,7 @@
 package ca.bookstore3005.project.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -34,7 +36,9 @@ public class CustomerController {
     }
     
     @PostMapping("/login")
-    public RedirectView login(@Validated @ModelAttribute("user") UserForm userForm, BindingResult result, RedirectAttributes attributes) {
+    public RedirectView login(@Validated @ModelAttribute("user") UserForm userForm, 
+                              BindingResult result, RedirectAttributes attributes, HttpSession session) {
+                                
       if (result.hasErrors()) {
         return new RedirectView("/");
       }
@@ -42,6 +46,7 @@ public class CustomerController {
       Customer customer = customerService.getCustomer(userForm);
 
       if (customer != null) {
+        session.setAttribute("user_email", customer.getEmail());
         return new RedirectView("/books");
       } else {
         attributes.addFlashAttribute("incorrect_credentials", true);

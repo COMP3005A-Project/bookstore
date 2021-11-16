@@ -41,7 +41,7 @@ create table if not exists publisher
 
 create table if not exists book
   (
-     isbn                 numeric(13, 0) not null,
+     isbn                 varchar(13) not null,
      title                varchar(30),
      publisher_name       varchar(30),
      stock                int,
@@ -57,7 +57,7 @@ create table if not exists book
 create table if not exists books_in_order
   (
      order_id serial unique,
-     isbn     numeric(13, 0) not null,
+     isbn     varchar(13) not null,
      amount   numeric(38,2) not null,
      primary key (order_id, isbn),
      foreign key (order_id) references book_order,

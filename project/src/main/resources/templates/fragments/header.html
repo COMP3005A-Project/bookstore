@@ -21,6 +21,11 @@
                 Cart (<span id="cart_num" th:text="${num_in_cart}"></span>)
               </a>
             </li>
+            <li th:classappend="${module == 'checkout' ? 'active' : ''}">
+              <a href="#" th:href="@{/checkout}">
+                Checkout
+              </a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
