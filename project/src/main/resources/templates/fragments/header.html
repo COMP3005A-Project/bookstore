@@ -18,7 +18,7 @@
             </li>
             <li th:classappend="${module == 'cart' ? 'active' : ''}">
               <a href="#" th:href="@{/task}">
-                Cart
+                Cart (<span id="cart_num" th:text="${num_in_cart}"></span>)
               </a>
             </li>
           </ul>
