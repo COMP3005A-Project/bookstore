@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <div th:replace="fragments/scripts :: scripts"></div>
-    <script src="js/defaultDT.js"></script>
+    <script src="js/booksDT.js"></script>
     <title>Look Inna Book</title>
   </head>
   <body>
@@ -10,7 +10,7 @@
     
     <div class="container panel panel-default">
       <div class="panel-body">
-        <table id="defaultDT" class="display" style="width:100%">
+        <table id="booksDT" class="display" style="width:100%">
           <thead>
             <tr>
               <th></th>
@@ -24,7 +24,7 @@
           </thead>
           <tbody>
             <tr th:each="book: ${allBooks}">
-              <td><input type="checkbox" id="bookCheck" th:value="${book.ISBN}"></td>
+              <td></td>
               <td th:text="${book.ISBN}"></td>
               <td th:text="${book.title}"></td>
               <td th:text="${book.author}"></td>

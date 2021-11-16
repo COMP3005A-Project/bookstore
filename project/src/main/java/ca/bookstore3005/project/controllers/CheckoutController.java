@@ -1,6 +1,9 @@
 package ca.bookstore3005.project.controllers;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
@@ -20,17 +23,15 @@ public class CheckoutController {
   }
 
   @GetMapping("/cart")
-  public String cart(Model model) {
+  public String cart(Model model, HttpSession session) {
 
-    // TODO: Need to grab from spring session
-    List<String> isbns = new ArrayList<>();
-    
-    // TODO: Pass in list of ISBN's from spring session...
-    List<Book> books = bookService.getBooksByISBN(isbns);
+    @SuppressWarnings("unchecked")
+    List<String> cart = (List<String>) session.getAttribute("cart");
+
+    List<Book> books = bookService.getBooksByISBN(cart);
 
     model.addAttribute("booksInCart", books);
     model.addAttribute("module", "cart");
-    model.addAttribute("isAuthenticated", true);
     
     return "cart";
   }
