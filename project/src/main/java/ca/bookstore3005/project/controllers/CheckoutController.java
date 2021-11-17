@@ -28,7 +28,10 @@ public class CheckoutController {
     @SuppressWarnings("unchecked")
     List<String> cart = (List<String>) session.getAttribute("cart");
 
-    List<Book> books = bookService.getBooksByISBN(cart);
+    List<Book> books = new ArrayList<>();
+    if (cart != null) {
+      books = bookService.getBooksByISBN(cart);
+    }
 
     model.addAttribute("booksInCart", books);
     model.addAttribute("module", "cart");
@@ -39,15 +42,7 @@ public class CheckoutController {
   @GetMapping("/checkout")
   public String checkout(Model model) {
 
-    // TODO: Need to grab from spring session
-    List<String> isbns = new ArrayList<>();
-    
-    // TODO: Pass in list of ISBN's from spring session...
-    List<Book> books = bookService.getBooksByISBN(isbns);
-
-    model.addAttribute("booksInCart", books);
     model.addAttribute("module", "checkout");
-    model.addAttribute("isAuthenticated", true);
     
     return "checkout";
   }

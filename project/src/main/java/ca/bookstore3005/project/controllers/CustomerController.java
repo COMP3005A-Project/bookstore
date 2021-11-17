@@ -55,6 +55,16 @@ public class CustomerController {
       }
     }
 
+    @PostMapping("/logout")
+    public RedirectView logout(HttpSession session) {
+      
+      //reset the session
+      session.removeAttribute("cart");
+      session.removeAttribute("user_email");
+
+      return new RedirectView("/");
+    }
+
     @GetMapping("/registration")
     public String registration(Model model) {
 
