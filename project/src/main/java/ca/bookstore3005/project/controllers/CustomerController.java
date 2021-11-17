@@ -2,6 +2,9 @@ package ca.bookstore3005.project.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import ca.bookstore3005.project.models.IsbnPacket;
 import ca.bookstore3005.project.forms.UserForm;
 import ca.bookstore3005.project.models.Customer;
 import ca.bookstore3005.project.services.CustomerService;
@@ -53,5 +61,69 @@ public class CustomerController {
         return new RedirectView("/");
       }
     }
+
+  /**
+   * Post method that adds books to user's cart
+   * 
+   * @param isbnData A list of IsbnPacket objects that will be compiled by Spring
+   *                 from a JSON object
+   * @param session  The user session, which holds the user's cart
+   * @return
+   */
+  @PostMapping("/addToCart")
+  public ResponseEntity<String> addToCart(@RequestBody List<IsbnPacket> isbnData, HttpSession session) {
+    @SuppressWarnings("unchecked")
+    List<String> cart = (List<String>) session.getAttribute("cart");
+
+    if (cart == null) {
+      cart = new ArrayList<>();
+
+      for (IsbnPacket isbnWrap : isbnData) {
+        cart.add(isbnWrap.getIsbn());
+      }
+
+    } else {
+
+      // Add all new unique ISBNs to the cart
+      for (IsbnPacket isbnWrap : isbnData) {
+        String isbn = isbnWrap.getIsbn();
+        if (!cart.contains(isbn)) {
+          cart.add(isbn);
+        }
+      }
+    }
+
+    // update session cart
+    session.setAttribute("cart", cart);
+
+    // return the number of books in cart
+    return new ResponseEntity<>(String.valueOf(cart.size()), HttpStatus.OK);
+  }
+
+  /**
+   * Post method that removes books from user's cart
+   * 
+   * @param isbnData A list of IsbnPacket objects that will be compiled by Spring
+   *                 from a JSON object
+   * @param session  The user session, which holds the user's cart
+   * @return
+   */
+  @PostMapping("/removeFromCart")
+  public ResponseEntity<String> removeFromCart(@RequestBody List<IsbnPacket> isbnData, HttpSession session) {
+    @SuppressWarnings("unchecked")
+    List<String> cart = (List<String>) session.getAttribute("cart");
+
+    // Remove each book ISBN from current cart for the session 
+    for (IsbnPacket isbnWrap : isbnData) {
+      String isbn = isbnWrap.getIsbn();
+      cart.remove(isbn);
+    }
+
+    // update session cart
+    session.setAttribute("cart", cart);
+
+    // return the number of books in cart
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
     
 }
