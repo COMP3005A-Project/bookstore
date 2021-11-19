@@ -18,7 +18,11 @@ $(document).ready(function() {
         className: 'btn btn-danger',
         action: updateCart
       }
-    ]
+    ],
+    "drawCallback" : function (settings) {
+      var sum = $('#cartDT').DataTable().column(5).data().sum();
+      $('#total').html(sum.toFixed(2));
+    }
   });
   
   function updateCart() {

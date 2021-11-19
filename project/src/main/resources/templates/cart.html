@@ -3,6 +3,7 @@
   <head>
     <div th:replace="fragments/scripts :: scripts"></div>
     <script src="js/cartDT.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.19/api/sum().js"></script>
     <title>Look Inna Book</title>
   </head>
   <body>
@@ -43,8 +44,10 @@
               </tr>
             </tfoot>
           </table>
+
+          <div class="text-right text-primary h4">Total: $<span id="total"></span></div>
           
-          <div class="text-right">
+          <div class="text-left">
             <button id="checkout" type="button" class="btn btn-primary">Proceed to Checkout</button>
           </div>  
         </div>

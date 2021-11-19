@@ -18,6 +18,6 @@ public class Book {
   private String title;
   private String author;
   private String year;
-  private String price;
-  private String stock;
+  private float  price;
+  private int    stock;
 }
