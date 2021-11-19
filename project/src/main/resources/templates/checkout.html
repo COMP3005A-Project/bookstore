@@ -29,7 +29,24 @@
             <div>Charging the card ending in <span>INSERT CREDIT CARD HERE...</span></div>
             <br>
             <h5 class="panel-title">Items</h5>
-            <div>Charging the card ending in <span>INSERT CREDIT CARD HERE...</span></div>
+            <table id="cartDT" class="display" style="width:100%">
+              <thead>
+                <tr>
+                  <th>ISBN</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="book: ${booksInCart}">
+                  <td th:text="${book.ISBN}"></td>
+                  <td th:text="${book.title}"></td>
+                  <td th:text="${book.author}"></td>
+                  <td th:text="${book.price}"></td>
+                </tr>
+              </tbody>
+            </table>
             <br>
             <h5 class="panel-title">Order Total</h5>
             <strong><div>$<span th:text="${total}"></span></div></strong>

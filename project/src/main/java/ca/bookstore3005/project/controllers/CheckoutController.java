@@ -55,6 +55,7 @@ public class CheckoutController {
     Customer user = customerService.getCustomer(customerEmail);
 
     model.addAttribute("user", user);
+    model.addAttribute("booksInCart", books);
     model.addAttribute("total", total);
     model.addAttribute("module", "checkout");
     model.addAttribute("isAuthenticated", true);
@@ -74,7 +75,7 @@ public class CheckoutController {
       total += book.getPrice();
     }
 
-    return total;
+    return Math.round(total*100)/100;
   }
 }
 
