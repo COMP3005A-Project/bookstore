@@ -19,6 +19,10 @@ public class CustomerService {
     return customerRepository.findByCreds(userForm.getEmail(), userForm.getPassword());
   }
 
+  public Customer getCustomer(String email) {
+    return customerRepository.findByEmail(email);
+  }
+
   public void addCustomer(Customer customerForm) {
     customerRepository.addCustomer(customerForm.getName(),
                                    customerForm.getEmail(), 

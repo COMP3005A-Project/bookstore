@@ -27,7 +27,7 @@ $(document).ready(function() {
       dataArray.push({"isbn":isbn}))
   
     $.ajax({
-      url: "/updateCart",
+      url: "/addToCart",
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify(dataArray),
