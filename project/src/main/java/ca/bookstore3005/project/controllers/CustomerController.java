@@ -137,7 +137,7 @@ public class CustomerController {
       return new RedirectView("/");
     }
 
-    @GetMapping("/registration")
+    @GetMapping(value = {"/registration", "register"})
     public String registration(Model model) {
 
       // pass a Customer to be used in form in the name of user_register
