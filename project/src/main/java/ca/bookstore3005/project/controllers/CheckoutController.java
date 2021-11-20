@@ -31,10 +31,14 @@ public class CheckoutController {
     @SuppressWarnings("unchecked")
     List<String> cart = (List<String>) session.getAttribute("cart");
 
+    
+
     List<Book> books = new ArrayList<>();
     if (cart != null) {
       books = bookService.getBooksByISBN(cart);
     }
+
+    System.out.println(books.size());
 
     model.addAttribute("booksInCart", books);
     model.addAttribute("module", "cart");
