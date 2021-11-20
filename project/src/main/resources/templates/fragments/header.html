@@ -26,6 +26,11 @@
                 Checkout
               </a>
             </li>
+            <li th:classappend="${module == 'orders' ? 'active' : ''}">
+              <a href="#" th:href="@{/orders}">
+                Orders
+              </a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>

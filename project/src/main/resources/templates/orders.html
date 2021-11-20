@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <div th:replace="fragments/scripts :: scripts"></div>
+  <script src="js/defaultDT.js"></script>
+  <title>Look Inna Book</title>
+</head>
+
+<body>
+  <div th:replace="fragments/header :: header"></div>
+  <h1>Your Orders</h1>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body"></div>
+      <table id="defaultDT" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Shipping ID</th>
+            <th>Order Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="order: ${allOrders}">
+            <td><a th:href="@{/order(orderId=${order.orderId})}" th:text="${order.orderId}"></a></td>
+            <td th:text="${order.shippingId}"></td>
+            <td>TBD</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Order ID</th>
+            <th>Shipping ID</th>
+            <th>Order Total</th>
+          </tr>
+        </tfoot>
+      </table>
+
+
+
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>

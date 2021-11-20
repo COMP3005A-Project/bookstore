@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <div th:replace="fragments/scripts :: scripts"></div>
+    <title>Look Inna Book</title>
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>Order</h1>
+          <div class="col-md-12 brdr-tp"></div>
+          <br>
+          <div>Order ID: <strong><span th:text="${order.orderId}"></span></strong></div>
+          <div>Shipping ID: <strong><span th:text="${order.shippingId}"></span></strong></div>
+          <div>Associated Email: <strong><span th:text="${order.email}"></span></strong></div>
+          <div>Date: <strong><span>TBD</span></strong></div>
+          <br>
+          <a href="/orders">Back</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
