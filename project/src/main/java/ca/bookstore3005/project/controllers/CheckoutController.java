@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.models.Customer;
@@ -53,7 +54,12 @@ public class CheckoutController {
     @SuppressWarnings("unchecked")
     List<String> cart = (List<String>) session.getAttribute("cart");
 
-    List<Book> books = bookService.getBooksByISBN(cart);
+    List<Book> books = new ArrayList<>();
+    if (cart != null) {
+      books = bookService.getBooksByISBN(cart);
+    } else {
+      return "bad_checkout";
+    }
 
     // Get user info via session
     String customerEmail = (String) session.getAttribute("user_email");
