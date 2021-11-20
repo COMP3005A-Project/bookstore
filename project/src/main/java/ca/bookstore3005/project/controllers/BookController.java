@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.models.IsbnPacket;
@@ -48,6 +49,14 @@ public class BookController {
     }
     
     return "books";
+  }
+
+  @GetMapping("/book")
+  public String book(@RequestParam String isbn, Model model) {
+
+    model.addAttribute("book", bookService.getBookByISBN(isbn));
+
+    return "book";
   }
 
   /**

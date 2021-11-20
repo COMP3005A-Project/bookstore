@@ -25,7 +25,7 @@
           <tbody>
             <tr th:each="book: ${allBooks}">
               <td></td>
-              <td th:text="${book.ISBN}"></td>
+              <td><a th:href="@{/book(isbn=${book.ISBN})}" th:text="${book.ISBN}"></a></td>
               <td th:text="${book.title}"></td>
               <td th:text="${book.author}"></td>
               <td th:text="${book.year}"></td>

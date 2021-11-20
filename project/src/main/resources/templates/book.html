@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <div th:replace="fragments/scripts :: scripts"></div>
+    <script src="js/booksDT.js"></script>
+    <title>Look Inna Book</title>
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1 class="panel-title text-info" th:text="${book.title}"></h1>
+          <div class="col-md-12 brdr-tp"></div>
+          <br>
+          <div>ISBN: <strong><span th:text="${book.ISBN}"></span></strong></div>
+          <div>Author: <strong><span th:text="${book.author}"></span></strong></div>
+          <div>Release: <strong><span th:text="${book.year}"></span></strong></div>
+          <div>Stock: <strong><span th:text="${book.stock}"></span></strong></div>
+          <div>Price: <strong><span th:text="${book.price}"></span></strong></div>
+          <br>
+          <a href="/books">Back</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
