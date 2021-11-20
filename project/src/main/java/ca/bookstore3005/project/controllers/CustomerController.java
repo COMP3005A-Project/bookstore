@@ -38,7 +38,7 @@ public class CustomerController {
       this.customerService = customerService;
     }
   
-    @GetMapping("/")
+    @GetMapping(value={"/", "login-page"})
     public ModelAndView loginView(Model model) {
 
       return new ModelAndView("login", "user", new UserForm());
