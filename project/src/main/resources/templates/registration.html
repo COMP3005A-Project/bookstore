@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <div th:replace="fragments/scripts :: scripts"></div>
+    <script src="js/defaultDT.js"></script>
+    <title>Look Inna Book</title>
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <!-- Sign Up Panel -->
+            <div class="panel panel-default">
+              <header class="panel-heading">
+                <h5 class="panel-title">Customer Information</h5>
+              </header>
+              <div class="panel-body">
+                <div class="wb-frmvld">
+                  <form th:action="@{/registration_signup}" th:object="${user_register}" method="post">
+                    <div class="form-group">
+                      <label for="InputName" class="required"><span class="field-name">Full name</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{name}" id="fname" name="fname" type="text" autocomplete="given-name" required="required" data-rule-minlength="2" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email" class="required"><span class="field-name">Email address (yourname@domain.com)</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{email}" id="email" name="email" type="text" autocomplete="email" required="required" data-rule-minlength="2" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="password" class="required"><span class="field-name">Password</span> <strong class="required">(required)</strong></label>
+                      <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Password" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="tel1" class="required"><span class="field-name">Telephone number (including area code)</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{phone}" id="tel1" name="tel1" type="tel" autocomplete="tel" required="required" data-rule-phoneUS="true" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="address_street_num" class="required"><span class="field-name">Address Number</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{address_street_num}" id="address_street_num" name="address_street_num" type="text" autocomplete="addr" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="address_street_name" class="required"><span class="field-name">Street Address</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{address_street_name}" id="address_street_name" name="address_street_name" type="text" autocomplete="addr" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="address_street_postal" class="required"><span class="field-name">Postal</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{address_street_postal}" id="address_street_postal" name="address_street_postal" type="text" autocomplete="addr" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="city" class="required"><span class="field-name">City</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{city}" id="city" name="city" type="text" autocomplete="city" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="province" class="required"><span class="field-name">Province</span> <strong class="required">(required)</strong></label>
+                      <select class="form-control" th:field="*{province}" id="province" name="province" required="required">
+                        <option th:value="ab" th:text="AB"></option>
+                        <option th:value="bc" th:text="BC"></option>
+                        <option th:value="mb" th:text="MB"></option>
+                        <option th:value="nb" th:text="NB"></option>
+                        <option th:value="nl" th:text="NL"></option>
+                        <option th:value="ns" th:text="NS"></option>
+                        <option th:value="on" th:text="ON"></option>
+                        <option th:value="pe" th:text="PE"></option>
+                        <option th:value="qc" th:text="QC"></option>
+                        <option th:value="sk" th:text="SK"></option>
+                      </select>
+                    </div>
+                    <!-- Payment Information -->
+                    <div class="form-group">
+                      <label for="credit_number" class="required"><span class="credit_number-name">Credit Card Number</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{card_number}" id="credit_number" name="credit_number" type="text" data-rule-rangeWords="[16,16]" />
+                    </div>
+                    <div class="form-group">
+                      <label for="expire" class="required"><span class="expire">Expiration Date (MM/YY)</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="expire" name="expire" type="text" data-rule-rangeWords="[5,5]" />
+                    </div>
+                    <div class="form-group">
+                      <label for="cvc" class="required"><span class="cvc">CVC</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="cvc" name="cvc" type="text" data-rule-rangeWords="[3,3]" />
+                    </div>
+                    <div class="form-group">
+                      <label for="fname" class="required"><span class="fname">Name on Card</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" id="fname" name="fname" type="text" autocomplete="given-name" data-rule-minlength="2" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Create Account</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

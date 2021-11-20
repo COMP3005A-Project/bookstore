@@ -21,4 +21,7 @@ public class Customer {
     private String address_street_num;
     private String address_street_name;
     private String address_street_postal;
+    private String city;
+    private String province;
+    private String card_number;
 }

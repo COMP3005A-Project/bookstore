@@ -30,7 +30,10 @@ public class CheckoutController {
     @SuppressWarnings("unchecked")
     List<String> cart = (List<String>) session.getAttribute("cart");
 
-    List<Book> books = bookService.getBooksByISBN(cart);
+    List<Book> books = new ArrayList<>();
+    if (cart != null) {
+      books = bookService.getBooksByISBN(cart);
+    }
 
     model.addAttribute("booksInCart", books);
     model.addAttribute("module", "cart");
@@ -57,8 +60,8 @@ public class CheckoutController {
     model.addAttribute("user", user);
     model.addAttribute("booksInCart", books);
     model.addAttribute("total", total);
+
     model.addAttribute("module", "checkout");
-    model.addAttribute("isAuthenticated", true);
     
     return "checkout";
   }
