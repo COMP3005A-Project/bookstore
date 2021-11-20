@@ -60,4 +60,19 @@ public class BookService {
 
     return books;
   }
+
+  /**
+   * Function to tally up the prices of books in cart to get a total cost...
+   * 
+   * @param books List of books objects to that are in the cart
+   * @return Sum of all prices of books in cart (i.e., total)
+   */
+  public float calculateTotalCost(List<Book> books) {
+    float total = 0;
+    for (Book book : books) {
+      total += book.getPrice();
+    }
+
+    return Math.round(total*100)/100;
+  }
 }
