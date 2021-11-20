@@ -21,11 +21,13 @@
                 Cart <span id="cart_num" th:text="${num_in_cart}"></span>
               </a>
             </li>
+            <!-- KEEP COMMENTED UNTIL HAPPY WITH HOW CHECKOUT WORKS...
             <li th:classappend="${module == 'checkout' ? 'active' : ''}">
               <a href="#" th:href="@{/checkout}">
                 Checkout
               </a>
             </li>
+            -->
             <li th:classappend="${module == 'orders' ? 'active' : ''}">
               <a href="#" th:href="@{/orders}">
                 Orders

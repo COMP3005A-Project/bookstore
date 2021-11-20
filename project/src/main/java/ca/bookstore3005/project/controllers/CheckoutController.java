@@ -63,7 +63,7 @@ public class CheckoutController {
       model.addAttribute("buttonHref", "login-page");
 
       return "invalid_action";
-    } else if (cart == null) {
+    } else if (cart == null || cart.isEmpty()) {
       model.addAttribute("reason", "No items in cart...");
       model.addAttribute("message", "There are no items in your cart. Please add books to your cart before checking out.");
       model.addAttribute("buttonText", "Return To Books");
