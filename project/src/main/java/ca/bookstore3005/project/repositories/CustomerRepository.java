@@ -11,6 +11,11 @@ public interface CustomerRepository extends CrudRepository<Customer, String>{
   @Query("SELECT * FROM Customer where email = :email AND password = :password")
   Customer findByCreds(@Param("email") String email,
                        @Param("password") String password);
+
+  @Query("SELECT * FROM Customer where email = :email")
+  Customer findByEmail(@Param("email") String email);
+
+
   @Modifying
   @Query("INSERT INTO Customer values(:email, :password, :name, :phone, :address_street_num, :address_street_name, :address_street_postal, :city, :province)")
   void addCustomer(@Param("name") String name,
