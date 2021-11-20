@@ -59,4 +59,25 @@ public class OrderService {
     public Order getOrderByShippingId(String shippingId) {
         return orderRepository.findByShippingId(Integer.parseInt(shippingId));
     }
+
+    /**
+     * Add new order under given user's email
+     * 
+     * @param email Email address to add order under
+     * @return Id of the newly created order
+     */
+    public long addOrder(String email) {
+        return orderRepository.addOrder(email);
+    }
+
+    /**
+     * Add book under specific order
+     * 
+     * @param order_id Order ID to tie book to
+     * @param isbn ISBN of book to add to order
+     * 
+     */
+    public void addBookToOrder(Long order_id, String isbn) {
+        orderRepository.addBookToOrder(order_id, isbn);
+    }
 }
