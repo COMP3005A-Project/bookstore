@@ -24,4 +24,5 @@ public class Customer {
     private String city;
     private String province;
     private String card_number;
+    private Boolean admin;
 }

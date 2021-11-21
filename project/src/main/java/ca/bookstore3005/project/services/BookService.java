@@ -72,5 +72,9 @@ public class BookService {
     }
 
     return Math.round(total*100)/100;
+  public void deleteBooks(List<String> isbns) {
+    for (String isbn : isbns) {
+      bookRepository.deleteByISBN(isbn);
+    }
   }
 }

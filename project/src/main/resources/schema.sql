@@ -10,6 +10,7 @@ create table if not exists customer
      city                  varchar(30),
      province              varchar(2),
      card_number           varchar(13),
+     admin                 boolean,
      primary key (email)
   );
 

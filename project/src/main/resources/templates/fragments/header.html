@@ -10,7 +10,7 @@
           <a class="navbar-brand" href="#">Look Inna Book</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+          <ul th:unless="${session.is_admin != null and session.is_admin}" class="nav navbar-nav">
             <li th:classappend="${module == 'shop' ? 'active' : ''}">
               <a href="#" th:href="@{/books}">
                 Shop
@@ -27,6 +27,20 @@
               </a>
             </li>
           </ul>
+
+          <ul th:if="${session.is_admin != null and session.is_admin}" class="nav navbar-nav">
+            <li th:classappend="${module == 'shop' ? 'active' : ''}">
+              <a href="#" th:href="@{/books}">
+                Shop
+              </a>
+            </li>
+            <li th:classappend="${module == 'reports' ? 'active' : ''}">
+              <a href="#" th:href="@{/reports}">
+                Reports
+              </a>
+            </li>
+          </ul>
+          
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
