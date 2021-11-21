@@ -17,9 +17,33 @@
           <div>Order ID: <strong><span th:text="${order.orderId}"></span></strong></div>
           <div>Shipping ID: <strong><span th:text="${order.shippingId}"></span></strong></div>
           <div>Associated Email: <strong><span th:text="${order.email}"></span></strong></div>
-          <div>Date: <strong><span>TBD</span></strong></div>
+          <div>Date: <strong><span th:text="${#dates.format(order.date, 'yyyy-MM-dd HH:mm:ss')}"></span></strong></div>
           <br>
-          <a href="/orders">Back</a>
+
+          <h5 class="panel-title">Items</h5>
+            <table id="cartDT" class="display" style="width:100%">
+              <thead>
+                <tr>
+                  <th>ISBN</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="book: ${booksInCart}">
+                  <td th:text="${book.ISBN}"></td>
+                  <td th:text="${book.title}"></td>
+                  <td th:text="${book.author}"></td>
+                  <td th:text="${book.price}"></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+
+          <a href="/orders">
+            <button type="button" class="btn btn-primary">Back to all orders</button>
+          </a>
         </div>
       </div>
     </div>

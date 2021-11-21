@@ -4,7 +4,6 @@
 <head>
   <div th:replace="fragments/scripts :: scripts"></div>
   <script src="js/defaultDT.js"></script>
-  <script src="js/checkout.js"></script>
   <title>Look Inna Book</title>
 </head>
 
@@ -54,7 +53,9 @@
           </div>
         </div>
 
-        <button id="checkout" type="button" class="btn btn-success">Complete Order</button>
+        <form action="/placeOrder" method="post">
+          <button type="submit" class="btn btn-success">Complete Order</button>
+        </form>
       </div>
     </div>
   </div>

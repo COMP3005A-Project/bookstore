@@ -1,5 +1,6 @@
 package ca.bookstore3005.project.services;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.models.Order;
 import ca.bookstore3005.project.repositories.OrderRepository;
 
@@ -46,8 +49,8 @@ public class OrderService {
      * @param orderId
      * @return
      */
-    public Order getOrderById(String orderId) {
-        return orderRepository.findByOrderId(Integer.parseInt(orderId));
+    public Order getOrderById(int orderId) {
+        return orderRepository.findByOrderId(orderId);
     }
 
     /**
@@ -57,7 +60,17 @@ public class OrderService {
      * @return
      */
     public Order getOrderByShippingId(String shippingId) {
-        return orderRepository.findByShippingId(Integer.parseInt(shippingId));
+        return orderRepository.findByShippingId(shippingId);
+    }
+
+    /**
+     * Find books under a given order number
+     * 
+     * @param orderId 
+     * @return List of books associated with the order_id
+     */
+    public List<Book> getBooksInOrder(int orderId) {
+        return orderRepository.findBooksInOrder(orderId);
     }
 
     /**
@@ -66,8 +79,8 @@ public class OrderService {
      * @param email Email address to add order under
      * @return Id of the newly created order
      */
-    public long addOrder(String email) {
-        return orderRepository.addOrder(email);
+    public long addOrder(String email, Timestamp date, String shippingId) {
+        return orderRepository.addOrder(email, date, shippingId);
     }
 
     /**
