@@ -56,6 +56,7 @@ public class CustomerController {
 
       if (customer != null) {
         session.setAttribute("user_email", customer.getEmail());
+        session.setAttribute("is_admin", customer.getAdmin());
         return new RedirectView("/books");
       } else {
         attributes.addFlashAttribute("incorrect_credentials", true);
@@ -133,6 +134,7 @@ public class CustomerController {
       //reset the session
       session.removeAttribute("cart");
       session.removeAttribute("user_email");
+      session.removeAttribute("is_admin");
 
       return new RedirectView("/");
     }

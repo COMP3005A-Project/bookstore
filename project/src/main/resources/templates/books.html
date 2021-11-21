@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <div th:replace="fragments/scripts :: scripts"></div>
-    <script src="js/booksDT.js"></script>
+    <script th:unless="${session.is_admin != null and session.is_admin}" src="js/booksDT.js"></script>
+    <script th:if="${session.is_admin != null and session.is_admin}" src="js/adminBooksDT.js"></script>
     <title>Look Inna Book</title>
   </head>
   <body>
@@ -45,9 +46,11 @@
             </tr>
           </tfoot>
         </table>
+
+        <a th:if="${session.is_admin != null and session.is_admin}" id="add-book" href="/addBook" class="button btn btn-success">Add book</a>
+
       </div>
     </div>
-    
 
   </body>
 </html>
