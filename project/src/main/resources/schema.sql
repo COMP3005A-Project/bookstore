@@ -24,7 +24,8 @@ create table if not exists book_order
   (
      order_id    serial unique,
      email       varchar(30) not null,
-     shipping_id serial unique,
+     shipping_id varchar(12),
+     date        timestamp not null,
      primary key (order_id),
      foreign key (email) references customer
   );
@@ -59,7 +60,7 @@ create table if not exists book
 
 create table if not exists books_in_order
   (
-     order_id serial unique,
+     order_id int not null,
      isbn     varchar(13) not null,
      amount   numeric(38,2) not null,
      primary key (order_id, isbn),
