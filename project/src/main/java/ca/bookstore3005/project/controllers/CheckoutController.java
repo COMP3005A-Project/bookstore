@@ -39,8 +39,6 @@ public class CheckoutController {
       books = bookService.getBooksByISBN(cart);
     }
 
-    System.out.println(books.size());
-
     model.addAttribute("booksInCart", books);
     model.addAttribute("module", "cart");
     model.addAttribute("cartTotal", bookService.calculateTotalCost(books));

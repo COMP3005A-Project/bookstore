@@ -11,7 +11,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-body">
-          <h1>Order</h1>
+          <h1>Order Details</h1>
           <div class="col-md-12 brdr-tp"></div>
           <br>
           <div>Order ID: <strong><span th:text="${order.orderId}"></span></strong></div>
@@ -31,9 +31,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="book: ${booksInCart}">
+                <tr th:each="book: ${booksInOrder}">
                   <td th:text="${book.ISBN}"></td>
-                  <td th:text="${book.title}"></td>
+                  <td><a th:href="@{/book(isbn=${book.ISBN})}" th:text="${book.title}"></a></td>
                   <td th:text="${book.author}"></td>
                   <td th:text="${book.price}"></td>
                 </tr>
