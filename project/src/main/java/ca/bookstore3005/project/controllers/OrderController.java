@@ -62,6 +62,9 @@ public class OrderController {
             orderService.addBookToOrder(orderId, isbn);
         }
 
+        // Clear cart after finished order
+        session.removeAttribute("cart");
+
         return new RedirectView(String.format("/order?orderId=%d", orderId));
     }
 
