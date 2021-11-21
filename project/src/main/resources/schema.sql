@@ -66,5 +66,5 @@ create table if not exists books_in_order
      amount   numeric(38,2) not null,
      primary key (order_id, isbn),
      foreign key (order_id) references book_order,
-     foreign key (isbn) references book
+     foreign key (isbn) references book on delete cascade
   ); 
