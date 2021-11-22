@@ -84,6 +84,16 @@ public class OrderService {
     }
 
     /**
+     * Add new order under given user's email
+     * 
+     * @param email Email address to add order under
+     * @return Id of the newly created order
+     */
+    public long addOrder(String email, Timestamp date, String shippingId, String streetNum, String streetName, String postal, String city, String province) {
+        return orderRepository.addOrder(email, date, shippingId, streetNum, streetName, postal, city, province);
+    }
+
+    /**
      * Add book under specific order
      * 
      * @param order_id Order ID to tie book to

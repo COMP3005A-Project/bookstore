@@ -78,6 +78,7 @@ public class CheckoutController {
     Customer user = customerService.getCustomer(customerEmail);
 
     model.addAttribute("user", user);
+    model.addAttribute("shipping_info", new Customer());
     model.addAttribute("booksInCart", books);
     model.addAttribute("total", bookService.calculateTotalCost(books));
 
