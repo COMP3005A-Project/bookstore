@@ -42,8 +42,8 @@ insert into book (ISBN, publisher_name, stock, title, author, year, price, num_p
 	values ('1234567891237', 'Publisher 3', 13,   'Title 4', 'Author 4', 2020, 125.99, 1123, 21.23);
 
 /* Inserting into user */
-insert into customer (email, password, name, address_street_num, address_street_name, address_street_postal, phone, admin)
-	values ('test.pilot@gmail.com', 'gaben12', 'Gaben', '123', 'Sesame Street', 'K1J6S5', '6137371111', false);
+insert into customer (email, password, name, address_street_num, address_street_name, address_street_postal, phone, card_number, admin)
+	values ('test.pilot@gmail.com', 'gaben12', 'Gaben', '123', 'Sesame Street', 'K1J6S5', '6137371111', '123456789012', false);
 
 insert into customer (email, password, name, address_street_num, address_street_name, address_street_postal, phone, admin)
 	values ('admin@gmail.com', 'gaben12', 'Owner', '123', 'Sesame Street', 'K1J634', '6138981111', true);

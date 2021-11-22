@@ -26,7 +26,7 @@
             <div>Address: <strong><span th:text="${user.address_street_num}"></span> <span th:text="${user.address_street_name}"></span> <span th:text="${user.address_street_postal}"></span></strong></div>
             <br>
             <h5 class="panel-title">Payment Info</h5>
-            <div>Charging the card ending in <span>INSERT CREDIT CARD HERE...</span></div>
+            <div>Charging the card ending in <span th:utext="${#strings.substring(user.card_number,8)}"></span></div>
             <br>
             <h5 class="panel-title">Items</h5>
             <table id="cartDT" class="display" style="width:100%">
