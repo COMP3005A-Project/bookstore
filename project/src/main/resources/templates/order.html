@@ -1,51 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <div th:replace="fragments/scripts :: scripts"></div>
-    <title>Look Inna Book</title>
-  </head>
-  <body>
-    <div th:replace="fragments/header :: header"></div>
-    
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h1>Order Details</h1>
-          <div class="col-md-12 brdr-tp"></div>
-          <br>
-          <div>Order ID: <strong><span th:text="${order.orderId}"></span></strong></div>
-          <div>Shipping ID: <strong><span th:text="${order.shippingId}"></span></strong></div>
-          <div>Associated Email: <strong><span th:text="${order.email}"></span></strong></div>
-          <div>Date: <strong><span th:text="${#dates.format(order.date, 'yyyy-MM-dd HH:mm:ss')}"></span></strong></div>
-          <br>
 
-          <h5 class="panel-title">Items</h5>
-            <table id="cartDT" class="display" style="width:100%">
-              <thead>
-                <tr>
-                  <th>ISBN</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="book: ${booksInOrder}">
-                  <td th:text="${book.ISBN}"></td>
-                  <td><a th:href="@{/book(isbn=${book.ISBN})}" th:text="${book.title}"></a></td>
-                  <td th:text="${book.author}"></td>
-                  <td th:text="${book.price}"></td>
-                </tr>
-              </tbody>
-            </table>
-            <br>
+<head>
+  <div th:replace="fragments/scripts :: scripts"></div>
+  <title>Look Inna Book</title>
+</head>
 
-          <a href="/orders">
-            <button type="button" class="btn btn-primary">Back to all orders</button>
-          </a>
-        </div>
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1>Order Details</h1>
+        <div class="col-md-12 brdr-tp"></div>
+        <br>
+        <div>Order ID: <strong><span th:text="${order.orderId}"></span></strong></div>
+        <div>Shipping ID: <strong><span th:text="${order.shippingId}"></span></strong></div>
+        <div>Associated Email: <strong><span th:text="${order.email}"></span></strong></div>
+        <div>Date: <strong><span th:text="${#dates.format(order.date, 'yyyy-MM-dd HH:mm:ss')}"></span></strong></div>
+        <br>
+
+        <h5 class="panel-title">Shipping Address</h5>
+        <strong><span th:text="${order.address_street_num} + ' ' + ${order.address_street_name} + ' ' + ${order.address_street_postal} + ', ' + ${order.city} + ' ' + ${order.province}"></span></strong>
+        <br>
+        <br>
+
+        <h5 class="panel-title">Items</h5>
+        <table id="cartDT" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>ISBN</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="book: ${booksInOrder}">
+              <td th:text="${book.ISBN}"></td>
+              <td><a th:href="@{/book(isbn=${book.ISBN})}" th:text="${book.title}"></a></td>
+              <td th:text="${book.author}"></td>
+              <td th:text="${book.price}"></td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+
+        <div>Total: <strong>$<span th:text="${orderTotal}"></span></strong></div>
+        <br>
+
+        <a href="/orders">
+          <button type="button" class="btn btn-primary">Back to all orders</button>
+        </a>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

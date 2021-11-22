@@ -27,6 +27,11 @@ create table if not exists book_order
      email       varchar(30) not null,
      shipping_id varchar(12),
      date        timestamp not null,
+     address_street_num    varchar(10),
+     address_street_name   varchar(255),
+     address_street_postal varchar(10),
+     city                  varchar(30),
+     province              varchar(2),
      primary key (order_id),
      foreign key (email) references customer
   );
