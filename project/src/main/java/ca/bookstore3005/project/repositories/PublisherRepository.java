@@ -4,9 +4,19 @@ import java.util.List;
 
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ca.bookstore3005.project.models.Publisher;
 
-public class PublisherRepository {
+@Repository
+public interface PublisherRepository extends CrudRepository<Publisher, String> {
     
+    @Query("SELECT * FROM bank_account WHERE name = :name")
+    Publisher findPublisher(@Param("name") String name);
+
+    @Query("SELECT * FROM bank_account")
+    List<Publisher> findAllPublishers();
+
+    @Query("SELECT bank_number FROM publisher WHERE name = :name")
+    Long findPublisherBankNum(@Param("name") String name);
 }
