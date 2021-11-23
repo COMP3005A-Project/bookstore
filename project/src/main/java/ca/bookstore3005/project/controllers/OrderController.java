@@ -22,6 +22,7 @@ import ca.bookstore3005.project.models.Customer;
 import ca.bookstore3005.project.models.Order;
 import ca.bookstore3005.project.services.BookService;
 import ca.bookstore3005.project.services.OrderService;
+import ca.bookstore3005.project.services.PublisherService;
 
 @Controller
 public class OrderController {
@@ -30,10 +31,12 @@ public class OrderController {
 
     private OrderService orderService;
     private BookService  bookService;
+    private PublisherService  publisherService;
 
-    OrderController(OrderService orderService, BookService bookService) {
+    OrderController(OrderService orderService, BookService bookService, PublisherService publisherService) {
         this.orderService = orderService;
-        this.bookService  = bookService; 
+        this.bookService  = bookService;
+        this.publisherService = publisherService;
     }
 
     @GetMapping("/order")
@@ -50,8 +53,7 @@ public class OrderController {
 
     @PostMapping("/placeOrder")
     public RedirectView orderView(HttpSession session, @Validated @ModelAttribute("shipping_info") Customer customer) {
-        logger.info("NEW NEW ORDER INCOMING....");
-
+        
         // Get current datetime and format to a proper timestamp
         long now = System.currentTimeMillis(); 
         Timestamp timestamp = new Timestamp(now);
@@ -65,9 +67,14 @@ public class OrderController {
         @SuppressWarnings("unchecked")
         List<String> cart = (List<String>) session.getAttribute("cart");
 
-        for (String isbn : cart) {
-            orderService.addBookToOrder(orderId, isbn);
-        }
+        // Link all books in cart to new order
+        orderService.addBooksToOrder(orderId, cart);
+
+        // Decrease the stock of all books included in order
+        bookService.decreaseStockLevels(cart);
+
+        // Add money to publisher's bank accounts for books purchased
+        publisherService.increaseSales(cart);
 
         // Clear cart after finished order
         session.removeAttribute("cart");

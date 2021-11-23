@@ -17,7 +17,9 @@ public class Book {
   private String ISBN;
   private String title;
   private String author;
+  private String publisher_name;
   private String year;
   private float  price;
+  private float  percent_to_publisher;
   private int    stock;
 }

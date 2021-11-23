@@ -17,6 +17,10 @@ public interface BookRepository extends CrudRepository<Book, String> {
 
   @Query("SELECT * FROM book")
   List<Book> findAllBooks();
+  
+  @Modifying
+  @Query("UPDATE book SET stock = stock - 1 WHERE isbn = :isbn")
+  void decreaseBookStock(@Param("isbn") String isbn);
 
   @Modifying
   @Query("DELETE FROM book WHERE isbn = :isbn;")

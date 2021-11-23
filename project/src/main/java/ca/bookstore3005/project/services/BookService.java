@@ -60,6 +60,18 @@ public class BookService {
   }
 
   /**
+     * Decrease stock of books in a given list
+     * 
+     * @param books_in_order List of ISBNs of books in the order
+     * 
+     */
+    public void decreaseStockLevels(List<String> books_in_order) {
+      for (String isbn : books_in_order) {
+          bookRepository.decreaseBookStock(isbn);
+      }
+  }
+
+  /**
    * Function to tally up the prices of books in cart to get a total cost...
    * 
    * @param books List of books objects to that are in the cart
