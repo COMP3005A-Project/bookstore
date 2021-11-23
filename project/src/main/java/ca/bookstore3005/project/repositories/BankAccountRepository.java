@@ -25,5 +25,5 @@ public interface BankAccountRepository extends CrudRepository<BankAccount, Strin
     @Modifying
     @Query("UPDATE bank_account SET amount = amount + :incr_amt WHERE bank_number = :bank_number")
     void increaseSalesByNumber(@Param("bank_number") long bank_number, @Param("incr_amt") double incr_amt);
-
+  
 }

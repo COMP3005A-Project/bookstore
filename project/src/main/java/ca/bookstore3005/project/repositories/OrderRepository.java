@@ -10,7 +10,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import ca.bookstore3005.project.models.Book;
-import ca.bookstore3005.project.models.BooksInOrder;
 import ca.bookstore3005.project.models.Order;
 
 @Repository
