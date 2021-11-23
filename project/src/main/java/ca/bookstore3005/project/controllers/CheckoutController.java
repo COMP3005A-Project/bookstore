@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.models.Customer;
@@ -78,6 +77,7 @@ public class CheckoutController {
     Customer user = customerService.getCustomer(customerEmail);
 
     model.addAttribute("user", user);
+    model.addAttribute("shipping_info", new Customer());
     model.addAttribute("booksInCart", books);
     model.addAttribute("total", bookService.calculateTotalCost(books));
 

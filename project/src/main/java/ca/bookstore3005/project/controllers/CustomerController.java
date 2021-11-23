@@ -151,6 +151,7 @@ public class CustomerController {
     public RedirectView registrationView(@Validated @ModelAttribute("user_register") Customer customer) {
       
       try {
+            customer.setAdmin(false);
             customerService.addCustomer(customer);
           } 
       // Checks for duplicates

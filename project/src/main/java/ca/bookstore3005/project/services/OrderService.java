@@ -1,13 +1,10 @@
 package ca.bookstore3005.project.services;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
-import java.util.Optional;
-
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 
 import ca.bookstore3005.project.models.Book;
@@ -17,8 +14,7 @@ import ca.bookstore3005.project.repositories.OrderRepository;
 @Service
 public class OrderService {
 
-    OrderRepository orderRepository;
-    Logger logger;
+    private OrderRepository orderRepository;
 
     OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
@@ -84,6 +80,16 @@ public class OrderService {
     }
 
     /**
+     * Add new order under given user's email
+     * 
+     * @param email Email address to add order under
+     * @return Id of the newly created order
+     */
+    public long addOrder(String email, Timestamp date, String shippingId, String streetNum, String streetName, String postal, String city, String province) {
+        return orderRepository.addOrder(email, date, shippingId, streetNum, streetName, postal, city, province);
+    }
+
+    /**
      * Add book under specific order
      * 
      * @param order_id Order ID to tie book to
@@ -92,5 +98,18 @@ public class OrderService {
      */
     public void addBookToOrder(Long order_id, String isbn) {
         orderRepository.addBookToOrder(order_id, isbn);
+    }
+
+    /**
+     * Add book under specific order
+     * 
+     * @param order_id Order ID to tie book to
+     * @param books_in_order List of ISBNs of books in the order
+     * 
+     */
+    public void addBooksToOrder(Long order_id, List<String> books_in_order) {
+        for (String isbn : books_in_order) {
+            orderRepository.addBookToOrder(order_id, isbn);
+        }
     }
 }

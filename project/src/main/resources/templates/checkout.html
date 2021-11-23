@@ -19,14 +19,16 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
-            <h5 class="panel-title">Shipping Info</h5>
+            <h5 class="panel-title">Customer Info</h5>
             <div>Name: <strong><span th:text="${user.name}"></span></strong></div>
             <div>Phone: <strong><span th:text="${user.phone}"></span></strong></div>
             <div>Email: <strong><span th:text="${user.email}"></span></strong></div>
-            <div>Address: <strong><span th:text="${user.address_street_num}"></span> <span th:text="${user.address_street_name}"></span> <span th:text="${user.address_street_postal}"></span></strong></div>
+            <div>Billing Address: <strong><span th:text="${user.address_street_num}"></span> <span
+                  th:text="${user.address_street_name}"></span> <span
+                  th:text="${user.address_street_postal}"></span></strong></div>
             <br>
             <h5 class="panel-title">Payment Info</h5>
-            <div>Charging the card ending in <span>INSERT CREDIT CARD HERE...</span></div>
+            <div>Charging the card ending in <span th:utext="${#strings.substring(user.card_number,8)}"></span></div>
             <br>
             <h5 class="panel-title">Items</h5>
             <table id="cartDT" class="display" style="width:100%">
@@ -49,13 +51,64 @@
             </table>
             <br>
             <h5 class="panel-title">Order Total</h5>
-            <strong><div>$<span th:text="${total}"></span></div></strong>
+            <strong>
+              <div>$<span th:text="${total}"></span></div>
+            </strong>
           </div>
         </div>
 
-        <form action="/placeOrder" method="post">
-          <button type="submit" class="btn btn-success">Complete Order</button>
-        </form>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h5 class="panel-title">Enter Shipping Details</h5>
+            <form th:action="@{/placeOrder}" th:object="${shipping_info}" method="post">
+              <div class="form-group">
+                <label for="address_street_num" class="required"><span class="field-name">Address Number</span> <strong
+                    class="required">(required)</strong></label>
+                <input class="form-control" th:field="*{address_street_num}" id="address_street_num"
+                  name="address_street_num" type="text" autocomplete="addr" required="required" />
+              </div>
+
+              <div class="form-group">
+                <label for="address_street_name" class="required"><span class="field-name">Street Address</span> <strong
+                    class="required">(required)</strong></label>
+                <input class="form-control" th:field="*{address_street_name}" id="address_street_name"
+                  name="address_street_name" type="text" autocomplete="addr" required="required" />
+              </div>
+
+              <div class="form-group">
+                <label for="address_street_postal" class="required"><span class="field-name">Postal</span> <strong
+                    class="required">(required)</strong></label>
+                <input class="form-control" th:field="*{address_street_postal}" id="address_street_postal"
+                  name="address_street_postal" type="text" autocomplete="addr" required="required" />
+              </div>
+
+              <div class="form-group">
+                <label for="city" class="required"><span class="field-name">City</span> <strong
+                    class="required">(required)</strong></label>
+                <input class="form-control" th:field="*{city}" id="city" name="city" type="text" autocomplete="city"
+                  required="required" />
+              </div>
+
+              <div class="form-group">
+                <label for="province" class="required"><span class="field-name">Province</span> <strong
+                    class="required">(required)</strong></label>
+                <select class="form-control" th:field="*{province}" id="province" name="province" required="required">
+                  <option th:value="ab" th:text="AB"></option>
+                  <option th:value="bc" th:text="BC"></option>
+                  <option th:value="mb" th:text="MB"></option>
+                  <option th:value="nb" th:text="NB"></option>
+                  <option th:value="nl" th:text="NL"></option>
+                  <option th:value="ns" th:text="NS"></option>
+                  <option th:value="on" th:text="ON"></option>
+                  <option th:value="pe" th:text="PE"></option>
+                  <option th:value="qc" th:text="QC"></option>
+                  <option th:value="sk" th:text="SK"></option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success">Complete Order</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
