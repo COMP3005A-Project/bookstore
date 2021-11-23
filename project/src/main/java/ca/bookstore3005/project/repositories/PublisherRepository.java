@@ -10,12 +10,12 @@ import ca.bookstore3005.project.models.Publisher;
 
 @Repository
 public interface PublisherRepository extends CrudRepository<Publisher, String> {
-    
+
+    @Query("SELECT * FROM publisher")
+    List<Publisher> findAllPublishers();
+
     @Query("SELECT * FROM bank_account WHERE name = :name")
     Publisher findPublisher(@Param("name") String name);
-
-    @Query("SELECT * FROM bank_account")
-    List<Publisher> findAllPublishers();
 
     @Query("SELECT bank_number FROM publisher WHERE name = :name")
     Long findPublisherBankNum(@Param("name") String name);

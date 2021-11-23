@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Publisher {
 
-    @Id
-    private String name; 
-    private String phone;
-    private String bank_number;
-    private String email;    
-    private String address_street_num;
-    private String address_street_name;
-    private String address_street_postalString;
+  @Id
+  private String name; 
+  private String phone;
+  private int bank_number;
+  private String email;    
+  private String address_street_num;
+  private String address_street_name;
+  private String address_street_postal;
 }
 

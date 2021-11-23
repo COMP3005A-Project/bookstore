@@ -91,4 +91,16 @@ public class BookService {
       bookRepository.deleteByISBN(isbn);
     }
   }
+
+  public void addBook(Book bookForm) {
+    bookRepository.addBook (bookForm.getISBN(),
+                            bookForm.getTitle(), 
+                            bookForm.getPublisher_name(),
+                            bookForm.getStock(),
+                            bookForm.getAuthor(),
+                            bookForm.getYear(),
+                            bookForm.getPrice(),
+                            bookForm.getNum_pages(),
+                            bookForm.getPercent_to_publisher());
+  }
 }

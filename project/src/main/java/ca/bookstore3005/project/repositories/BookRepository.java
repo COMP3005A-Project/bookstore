@@ -25,4 +25,17 @@ public interface BookRepository extends CrudRepository<Book, String> {
   @Modifying
   @Query("DELETE FROM book WHERE isbn = :isbn;")
   void deleteByISBN(@Param("isbn") String isbn);
+
+
+  @Modifying
+  @Query("INSERT INTO Book values(:isbn, :title, :publisher_name, :stock, :author, :year, :price, :num_pages, :percent_to_publisher)")
+  void addBook(@Param("isbn") String isbn,
+                   @Param("title") String title,
+                   @Param("publisher_name") String publisher_name,
+                   @Param("stock") int stock,
+                   @Param("author") String author,
+                   @Param("year") int year,
+                   @Param("price") float price,
+                   @Param("num_pages") int num_pages,
+                   @Param("percent_to_publisher") float percent_to_publisher);
 }
