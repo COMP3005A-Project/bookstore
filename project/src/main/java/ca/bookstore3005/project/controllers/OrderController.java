@@ -53,8 +53,7 @@ public class OrderController {
 
     @PostMapping("/placeOrder")
     public RedirectView orderView(HttpSession session, @Validated @ModelAttribute("shipping_info") Customer customer) {
-        logger.info("NEW NEW ORDER INCOMING....");
-
+        
         // Get current datetime and format to a proper timestamp
         long now = System.currentTimeMillis(); 
         Timestamp timestamp = new Timestamp(now);

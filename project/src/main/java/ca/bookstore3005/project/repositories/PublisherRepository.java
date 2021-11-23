@@ -19,4 +19,10 @@ public interface PublisherRepository extends CrudRepository<Publisher, String> {
 
     @Query("SELECT bank_number FROM publisher WHERE name = :name")
     Long findPublisherBankNum(@Param("name") String name);
+
+    @Query("SELECT bank_number FROM publisher")
+    List<String> findAllBankNumbers();
+
+    @Query("SELECT bank_number FROM publisher WHERE name = :name")
+    long findBankNumber(@Param("name") String name);
 }

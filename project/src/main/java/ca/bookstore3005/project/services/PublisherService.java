@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.repositories.BankAccountRepository;
-import ca.bookstore3005.project.repositories.BookRepository;
-import ca.bookstore3005.project.repositories.PublisherRepository;
 
 @Service
 public class PublisherService {
@@ -27,13 +25,18 @@ public class PublisherService {
     public void increaseSales(List<String> booksInOrder) {
         List<Book> books = bookService.getBooksByISBN(booksInOrder);
 
+        // For each book, calculate the cutback to the publisher and add it onto the publisher's bank account amount
         for (int i=0; i<books.size(); i++) {
             // Calculate publisher cut
-            double publisherCut = Math.round(100.00 * books.get(i).getPrice() * books.get(i).getPercent_to_publisher()) / 100.00;
+            float bookPrice = books.get(i).getPrice();
+            float cutbackPercent = books.get(i).getPercent_to_publisher();
+            double publisherCut = Math.round(100.00 * (bookPrice * cutbackPercent)) / 100.00;
 
-            // Increase sales for specific publisher
-            bankAccountRepository.increaseSales(books.get(i).getPublisher(), publisherCut);
+            // Get publisher bank number
+            String publisherName = books.get(i).getPublisher_name();
 
+            // Increase sales for specific publisher by name
+            bankAccountRepository.increaseSalesByName(publisherName, publisherCut);
         }
     }
 }
