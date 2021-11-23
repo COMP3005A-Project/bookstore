@@ -59,7 +59,7 @@ create table if not exists book
      year                 numeric(4, 0),
      price                numeric(5, 2) not null,
      num_pages            int,
-     percent_to_publisher numeric(4, 2) not null,
+     percent_to_publisher numeric(4, 4) not null,
      primary key (isbn),
      foreign key (publisher_name) references publisher
   );
