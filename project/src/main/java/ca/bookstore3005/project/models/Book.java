@@ -16,8 +16,11 @@ public class Book {
   @Id
   private String ISBN;
   private String title;
+  private String publisher_name;
   private String author;
-  private String year;
+  private int year;
   private float  price;
+  private int    num_pages;
+  private float  percent_to_publisher;
   private int    stock;
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <div th:replace="fragments/scripts :: scripts"></div>
+    <script th:unless="${session.is_admin != null and session.is_admin}" src="js/booksDT.js"></script>
+    <script th:if="${session.is_admin != null and session.is_admin}" src="js/adminBooksDT.js"></script>
+    <title>Look Inna Book</title>
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <!-- Book Information Panel -->
+            <div class="panel panel-default">
+              <header class="panel-heading">
+                <h5 class="panel-title">Book Information</h5>
+              </header>
+              <div class="panel-body">
+                <div class="wb-frmvld">
+                  <form th:action="@{/add_new_book}" th:object="${new_book}" method="post">
+                    <div class="form-group">
+                      <label for="ISBN" class="required"><span class="field-name">ISBN</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{ISBN}" id="ISBN" name="ISBN" type="text" autocomplete="given-name" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="title" class="required"><span class="field-name">Title</span> <strong class="required">(required)</strong></label>
+                      <input class="form-control" th:field="*{title}" id="title" name="title" type="text" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="author" class="required"><span class="field-name">Author</span> <strong class="required">(required)</strong></label>
+                        <input class="form-control" th:field="*{author}" id="author" name="author" type="text" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="publisher_name" class="required"><span class="field-name">Publisher</span> <strong class="required">(required)</strong></label>
+                      <select class="form-control" th:field="*{publisher_name}" id="publisher_name" name="publisher_name" required="required">
+                        <option value="0">Select Publisher</option>
+                        <option th:each = "publisher : ${allPublishers}" th:value="${publisher.name}" th:text="${publisher.name}"></option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stock" class="required"><span class="field-name">Stock</span> <strong class="required">(required)</strong></label>
+                        <input class="form-control" th:field="*{stock}" id="stock" name="stock" type="number" required="required" min=0/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year" class="required"><span class="field-name">Year</span> <strong class="required">(required)</strong></label>
+                        <input class="form-control" th:field="*{year}" id="year" name="year" type="number" required="required" min=1000/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price" class="required"><span class="field-name">Price</span> <strong class="required">(required)</strong></label>
+                        <input class="form-control" th:field="*{price}" id="price" name="price" type="text" required="required" step="0.01" min=0 />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num_pages" class="required"><span class="field-name">Number of Pages</span> <strong class="required">(required)</strong></label>
+                        <input class="form-control" th:field="*{num_pages}" id="num_pages" name="num_pages" type="number" required="required" min=0/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="percent_to_publisher" class="required"><span class="field-name">Percent to Publisher (Ex. 25)</span> <strong class="required">(required)</strong></label>
+                        <input class="form-control" th:field="*{percent_to_publisher}" id="percent_to_publisher" name="percent_to_publisher" type="number" required="required" step="0.01" min=0/>
+                    </div>
+                    <button type="submit" class="btn btn-default">Add Book</button>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
