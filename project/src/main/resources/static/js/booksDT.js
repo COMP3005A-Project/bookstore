@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var table = $('#booksDT').DataTable( {
+
     columnDefs: [ {
       orderable: false,
       className: 'select-checkbox',
@@ -16,7 +17,23 @@ $(document).ready(function() {
         text: 'Add to cart',
         action: updateCart
       }
-    ]
+    ],
+
+    initComplete: function () {
+      // Apply the search
+      this.api().columns().every( function () {
+          var that = this;
+
+          $( 'input', this.footer() ).on( 'keyup change clear', function () {
+              if ( that.search() !== this.value ) {
+                  that
+                      .search( this.value )
+                      .draw();
+              }
+          } );
+      } );
+  }
+
   });
   
   function updateCart() {
