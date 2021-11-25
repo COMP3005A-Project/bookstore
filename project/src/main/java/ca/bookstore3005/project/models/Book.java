@@ -23,4 +23,5 @@ public class Book {
   private int    num_pages;
   private float  percent_to_publisher;
   private int    stock;
+  private String genre;
 }

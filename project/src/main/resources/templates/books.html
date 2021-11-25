@@ -18,6 +18,7 @@
               <th>ISBN</th>
               <th>Title</th>
               <th>Author</th>
+              <th>Genre</th>
               <th>Release</th>
               <th>Price</th>
               <th>Stock</th>
@@ -29,6 +30,7 @@
               <td th:text="${book.ISBN}"></td>
               <td><a th:href="@{/book(isbn=${book.ISBN})}" th:text="${book.title}"></a></td>
               <td th:text="${book.author}"></td>
+              <td th:text="${book.genre}"></td>
               <td th:text="${book.year}"></td>
               <td th:text="${book.price}"></td>
               <td th:text="${book.stock}"></td>
@@ -41,19 +43,22 @@
                 <input type="text" size="8" placeholder="Search ISBN">
               </th>
               <th>
-                <input type="text" size="10" placeholder="Search Title">
+                <input type="text" size="8" placeholder="Search Title">
               </th>
               <th>
-                <input type="text" size="10" placeholder="Search Author">
+                <input type="text" size="8" placeholder="Search Author">
               </th>
               <th>
-                <input type="text" size="10" placeholder="Search Release">
+                <input type="text" size="8" placeholder="Search Genre">
               </th>
               <th>
-                <input type="text" size="10" placeholder="Search Price">
+                <input type="text" size="8" placeholder="Search Release">
               </th>
               <th>
-                <input type="text" size="10" placeholder="Search Stock">
+                <input type="text" size="8" placeholder="Search Price">
+              </th>
+              <th>
+                <input type="text" size="8" placeholder="Search Stock">
               </th>
             </tr>
           </tfoot>

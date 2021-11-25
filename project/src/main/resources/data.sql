@@ -29,17 +29,17 @@ insert into publisher (name, phone, bank_number, email, address_street_num, addr
 
 
 /* Inserting books */
-insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher)
-	values ('1234567891234', 'Publisher 1', 3,   'Title 1', 'Author 1', 2000, 12.99, 123, 0.1050);
+insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
+	values ('1234567891234', 'Publisher 1', 3,   'Title 1', 'Author 1', 2000, 12.99, 123, 0.1050, 'Horror');
 
-insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher)
-	values ('1234567891235', 'Publisher 1', 1,   'Title 2', 'Author 2', 2012, 16.99, 250, 0.1550);
+insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
+	values ('1234567891235', 'Publisher 1', 1,   'Title 2', 'Author 2', 2012, 16.99, 250, 0.1550, 'Fiction');
 
-insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher)
-	values ('1234567891236', 'Publisher 2', 6,   'Title 3', 'Author 3', 1990, 34.99, 189, 0.0570);
+insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
+	values ('1234567891236', 'Publisher 2', 6,   'Title 3', 'Author 3', 1990, 34.99, 189, 0.0570, 'Sci-Fi');
 
-insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher)
-	values ('1234567891237', 'Publisher 3', 13,   'Title 4', 'Author 4', 2020, 125.99, 1123, 0.2123);
+insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
+	values ('1234567891237', 'Publisher 3', 13,   'Title 4', 'Author 4', 2020, 125.99, 1123, 0.2123, 'Non-Fiction');
 
 /* Inserting into user */
 insert into customer (email, password, name, address_street_num, address_street_name, address_street_postal, phone, card_number, admin)

@@ -101,6 +101,7 @@ public class BookService {
                             bookForm.getYear(),
                             bookForm.getPrice(),
                             bookForm.getNum_pages(),
-                            bookForm.getPercent_to_publisher());
+                            bookForm.getPercent_to_publisher(),
+                            bookForm.getGenre());
   }
 }

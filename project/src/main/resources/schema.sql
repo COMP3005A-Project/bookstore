@@ -60,6 +60,7 @@ create table if not exists book
      price                numeric(5, 2) not null,
      num_pages            int,
      percent_to_publisher numeric(4, 4) not null,
+     genre                varchar(30),
      primary key (isbn),
      foreign key (publisher_name) references publisher
   );
