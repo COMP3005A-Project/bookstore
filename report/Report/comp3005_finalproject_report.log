@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.20)  22 NOV 2021 11:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.20)  28 NOV 2021 12:36
 entering extended mode
 **./comp3005_finalproject_report.tex
 (comp3005_finalproject_report.tex
@@ -900,9 +900,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
  []
 
 
-Overfull \hbox (8.2596pt too wide) in paragraph at lines 65--71
+Overfull \hbox (7.14848pt too wide) in paragraph at lines 65--71
 []\OT1/cmr/m/n/10 customer($[]$, pass-word, name, phone, street[]number, street
-[]name, postal[]code, city, province, card[]number) 
+[]name, postal[]code, city, province, card[]number,
  []
 
 
@@ -911,49 +911,337 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--71
  []
 
 [2 <../Diagrams/ER-diagram-bookstore-comp3005-finalproject.drawio.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-<../Diagrams/Schema-diagram-comp3005-finalproject.drawio.png, id=44, 700.6175pt
- x 1033.8625pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
+
+ []
+
+
+Overfull \hbox (5.98566pt too wide) in paragraph at lines 121--124
+[]\OT1/cmr/m/n/10 Closure of \OT1/cmr/m/it/10 or-der[]id\OT1/cmr/m/n/10 , (\OT1
+/cmr/m/it/10 or-der[]id\OT1/cmr/m/n/10 )+ = (or-der[]id, email, ship-ping[]id, 
+date, street[]number, street[]name, postal[]code,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--124
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 125--128
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--132
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--175
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--192
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--210
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
+
+ []
+
+
+Overfull \hbox (4.38403pt too wide) in paragraph at lines 213--216
+[]\OT1/cmr/m/n/10 Closure of \OT1/cmr/m/it/10 email, pass-word\OT1/cmr/m/n/10 ,
+ (\OT1/cmr/m/it/10 email, pass-word\OT1/cmr/m/n/10 )+ = (email, pass-word, name
+, phone, street[]number, street[]name,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--216
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--226
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--229
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--235
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--247
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--264
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 273--276
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 281--282
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--288
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
+
+ []
+
+<../Diagrams/Schema-diagram-comp3005-finalproject.drawio.png, id=68, 941.5175pt
+ x 973.6375pt>
 File: ../Diagrams/Schema-diagram-comp3005-finalproject.drawio.png Graphic file 
 (type png)
 <use ../Diagrams/Schema-diagram-comp3005-finalproject.drawio.png>
 Package pdftex.def Info: ../Diagrams/Schema-diagram-comp3005-finalproject.drawi
-o.png  used on input line 78.
-(pdftex.def)             Requested size: 350.30789pt x 516.93pt.
+o.png  used on input line 295.
+(pdftex.def)             Requested size: 470.7576pt x 486.81755pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Overfull \hbox (2.06073pt too wide) in paragraph at lines 295--296
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
 
  []
 
-[3 <../Diagrams/Schema-diagram-comp3005-finalproject.drawio.png>]
+[7] [8 <../Diagrams/Schema-diagram-comp3005-finalproject.drawio.png>]
 (comp3005_finalproject_report.aux)
 Package rerunfilecheck Info: File `comp3005_finalproject_report.out' has not ch
 anged.
 (rerunfilecheck)             Checksum: 8AD9486FB4A528903C00DF1B18824DF6;709.
  ) 
 Here is how much of TeX's memory you used:
- 22661 strings out of 478927
- 422135 string characters out of 2852535
- 698436 words of memory out of 3000000
+ 22671 strings out of 478927
+ 421899 string characters out of 2852535
+ 702436 words of memory out of 3000000
  40117 multiletter control sequences out of 15000+600000
  407384 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,6n,108p,433b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,6n,108p,433b,421s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\warsn\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk><C:/Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmbx12.pfb><C:/Users/warsn/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmbx9.pfb><C:/Users/warsn/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/warsn/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/warsn/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Users/warsn/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on comp3005_finalproject_report.pdf (3 pages, 153611 bytes).
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/warsn/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/warsn/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/warsn/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/war
+sn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/
+Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><C:/Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmti10.pfb>
+Output written on comp3005_finalproject_report.pdf (8 pages, 205316 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
+ 132 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
  55 words of extra memory for PDF output out of 10000 (max. 10000000)
 

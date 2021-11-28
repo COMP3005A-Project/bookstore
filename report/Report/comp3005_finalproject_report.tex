@@ -62,14 +62,231 @@ The following is the Entity-Relationship Diagram created to model the entities a
 \section{Reduction to Relation Schemas}
 Here are the relation schemas gained from reducing our ER diagram into relations... (Note: Primary keys are underlined)\\
 
-book(\underline{ISBN}, publisher\_name, stock, title, author, year, price, num\_pages, percent\_to\_publisher)\\
+book(\underline{isbn}, title, author, genre, year, price, num\_pages, publisher\_name, stock, percent\_to\_publisher)\\
 \indent order(\underline{order\_id}, email, shipping\_id, date, street\_number, street\_name, postal\_code, city, province)\\
-\indent books\_in\_order(\underline{order\_id}, \underline{ISBN}, amount)\\
-\indent customer(\underline{email}, password, name, phone, street\_number, street\_name, postal\_code, city, province, card\_number)\\
+\indent books\_in\_order(\underline{order\_id}, \underline{isbn}, amount)\\
+\indent customer(\underline{email}, password, name, phone, street\_number, street\_name, postal\_code, city, province, card\_number, admin)\\
 \indent publisher(\underline{name}, phone, bank\_number, email, street\_number, street\_name, postal\_code)\\
 \indent bank\_account(\underline{bank\_number}, amount)\\
 
 \section{Normalization of Relation Schemas}
+
+\underline{\textbf{Functional Dependencies}}\\
+
+\noindent\emph{book}
+
+isbn $\rightarrow$ title, author, genre, year, price, num\_pages, publisher\_name, stock, percent\_to\_publisher\\
+\indent title, author $\rightarrow$ isbn, genre, year, price, num\_pages, publisher\_name, stock, percent\_to\_publisher\\
+
+\noindent\emph{order}
+
+order\_id $\rightarrow$ email, shipping\_id, date, street\_number, street\_name, postal\_code, city, province\\
+\indent shipping\_id $\rightarrow$ email, order\_id, date, street\_number, street\_name, postal\_code, city, province\\
+\indent postal\_code $\rightarrow$ city, province\\
+
+\noindent\emph{books\_in\_order}
+
+order\_id, isbn $\rightarrow$ amount\\
+
+\noindent\emph{customer}
+
+email, password $\rightarrow$ name, phone, street\_number, street\_name, postal\_code, city, province, card\_number, admin\\
+\indent postal\_code $\rightarrow$ city, province\\
+
+\noindent\emph{publisher}
+
+name $\rightarrow$ email, phone, bank\_number, street\_number, street\_name, postal\_code\\
+\indent email $\rightarrow$ name, phone, bank\_number, street\_number, street\_name, postal\_code\\
+
+\noindent\emph{bank\_account}
+
+bank\_number $\rightarrow$ amount\\
+
+\noindent\underline{\textbf{Good Normal Form Check and Decomposition}}\\
+
+\noindent\underline{\emph{book}}\\
+
+\noindent 1st FD...\\
+\indent Closure of \emph{isbn}, (\emph{isbn})+ = (isbn, title, author, genre, year, price, num\_pages, publisher\_name, stock, percent\_to\_publisher)\\
+\indent Since the closure of isbn includes all attributes in the relation, it means isbn is a superkey for the relation and it complies with BCNF.\\
+
+\noindent 2nd FD...\\
+\indent Closure of \emph{title, author}, (\emph{title, author})+ = (isbn, title, author, genre, year, price, num\_pages, publisher\_name, stock, percent\_to\_publisher)\\
+\indent Since the closure of (title, author) includes all attributes in the relation, it means (title, author) is a superkey for the relation and it complies with BCNF.\\
+
+\noindent Since all FD's for this relation satisfy the conditions for BCNF, this table is already in BCNF. Since the table is already in BCNF and no decomposition was done, all dependencies are preserved.\\
+
+\noindent\underline{\emph{order}}\\
+
+\noindent 1st FD...\\
+\indent Closure of \emph{order\_id}, (\emph{order\_id})+ = (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code, city, province)\\
+\indent Since the closure of order\_id includes all attributes in the relation, it means order\_id is a superkey for the relation and it complies with BCNF.\\
+
+\noindent 2nd FD...\\
+\indent Closure of \emph{shipping\_id}, (\emph{shipping\_id})+ = (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code, city, province)\\
+\indent Since the closure of shipping\_id includes all attributes in the relation, it means shipping\_id is a superkey for the relation and it complies with BCNF.\\
+
+\noindent 3rd FD...\\
+\indent Closure of \emph{postal\_code}, (\emph{postal\_code})+ = (postal\_code, city, province)\\
+\indent Since the closure of postal\_code does not include all attributes in the original relation, it means postal\_code is not a superkey for the relation and thus violates the conditions for BCNF. We will need to decompose this relation.\\
+
+\noindent\underline{Decomposition}\\
+Decompose into two new relations, order and region\_order...
+
+order(order\_id, email, shipping id, date, street\_number, street\_name)\\
+\indent region\_order(postal\_code, city, province)\\
+
+\noindent Now none of the functional dependencies violates BCNF since postal\_code is now a superkey for the relation called \emph{region\_order}.\\
+
+\noindent\underline{Dependency preservation}\\
+
+\begin{enumerate}
+	\item Check FD: order\_id $\rightarrow$ email, shipping\_id, date, street\_number, street\_name, postal\_code, city, province\\
+	Start with result $r =$ order\_id\\
+	
+	$R_{1} = $(order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	$t = (result \cap R_{1})+ \cap R_{1}$\\
+	$t =$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	result $=$ (order\_id) $\cup$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	result $=$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	
+	$R_{2} =$ (postal\_code, city, province)\\
+	$t = (result \cap R_{2})+ \cap R_{2}$\\
+	$t =$ (postal\_code, province, city)\\
+	result $=$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code) $\cup$ (postal\_code, province, city)\\
+	result $=$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	
+	Since result contains everything on the RHS of this FD, this dependency is preserved.
+	
+	\item Check FD: shipping\_id $\rightarrow$ email, order\_id, date, street\_number, street\_name, postal\_code, city, province\\
+	Start with result $r =$ shipping\_id\\
+	
+	$R_{1} = $(order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	$t = (result \cap R_{1})+ \cap R_{1}$\\
+	$t =$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	result $=$ (shipping\_id) $\cup$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	result $=$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	
+	$R_{2} =$ (postal\_code, city, province)\\
+	$t = (result \cap R_{2})+ \cap R_{2}$\\
+	$t =$ (postal\_code, province, city)\\
+	result $=$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code) $\cup$ (postal\_code, province, city)\\
+	result $=$ (order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	
+	Since result contains everything on the RHS of this FD, this dependency is preserved.
+
+	\item Check FD: postal\_code $\rightarrow$ city, province\\
+	Start with result $r =$ postal\_code\\
+	
+	$R_{1} = $(order\_id, email, shipping\_id, date, street\_number, street\_name, postal\_code)\\
+	$t = (result \cap R_{1})+ \cap R_{1}$\\
+	$t =$ (postal\_code)\\
+	result $=$ (postal\_code) $\cup$ (postal\_code)\\
+	result $=$ (postal\_code)\\
+	
+	$R_{2} =$ (postal\_code, city, province)\\
+	$t = (result \cap R_{2})+ \cap R_{2}$\\
+	$t =$ (postal\_code, province, city)\\
+	result $=$ (postal\_code) $\cup$ (postal\_code, province, city)\\
+	result $=$ (postal\_code, province, city)\\
+	
+	Since result contains everything on the RHS of this FD, this dependency is preserved.
+
+\end{enumerate}
+
+\noindent All three dependencies were shown to be preserved after running the dependency preservation algorithm, therefore the decomposition into BCNF for new relations book and region\_order is dependency preserving.\\
+
+\noindent\underline{\emph{books\_in\_order}}\\
+
+\noindent 1st FD...\\
+\indent Closure of \emph{isbn, order\_id}, (\emph{isbn, order\_id})+ = (isbn, order\_id, amount)\\
+\indent Since the closure of isbn, order\_id includes all attributes in the relation, it means isbn, order\_id is a superkey for the relation and it complies with BCNF.\\
+
+\noindent\underline{\emph{books\_in\_order}}\\
+
+\noindent 1st FD...\\
+\indent Closure of \emph{isbn, order\_id}, (\emph{isbn, order\_id})+ = (isbn, order\_id, amount)\\
+\indent Since the closure of isbn, order\_id includes all attributes in the relation, it means isbn, order\_id is a superkey for the relation and it complies with BCNF.\\
+
+\noindent\underline{\emph{customer}}\\
+
+\noindent 1st FD...\\
+\indent Closure of \emph{email, password}, (\emph{email, password})+ = (email, password, name, phone, street\_number, street\_name, postal\_code, city, province, card\_number, admin)\\
+\indent Since the closure of email, password includes all attributes in the relation, it means email, password is a superkey for the relation and it complies with BCNF.\\
+
+\noindent 2nd FD...\\
+\indent Closure of \emph{postal\_code}, (\emph{postal\_code})+ = (postal\_code, city, province)\\
+\indent Since the closure of postal\_code does not include all attributes in the original relation, it means postal\_code is not a superkey for the relation and thus violates the conditions for BCNF. We will need to decompose this relation.\\
+
+\noindent\underline{Decomposition}\\
+Decompose into two new relations, order and region\_order...
+
+customer(\underline{email}, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin)\\
+\indent region\_customer(postal\_code, city, province)\\
+
+\noindent Now none of the functional dependencies violates BCNF since postal\_code is now a superkey for the relation called 
+\emph{region\_customer}.\\
+
+\noindent\underline{Dependency preservation}\\
+
+\begin{enumerate}
+	\item Check FD: email, password  $\rightarrow$ name, phone, street\_number, street\_name, postal\_code, city, province, card\_number, admin\\
+	Start with result $r =$ (email, password)\\
+	
+	$R_{1} = $(email, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin)\\
+	$t = (result \cap R_{1})+ \cap R_{1}$\\
+	$t =$ (email, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin)\\
+	result $=$ (email, password) $\cup$ (email, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin)\\
+	result $=$ (email, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin)\\
+	
+	$R_{2} =$ (postal\_code, city, province)\\
+	$t = (result \cap R_{2})+ \cap R_{2}$\\
+	$t =$ (postal\_code, province, city)\\
+	result $=$ (email, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin) $\cup$ (postal\_code, province, city)\\
+	result $=$ (email, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin)\\
+	
+	Since result contains everything on the RHS of this FD, this dependency is preserved.
+
+	\item Check FD: postal\_code $\rightarrow$ city, province\\
+	Start with result $r =$ postal\_code\\
+	
+	$R_{1} = $(email, password, name, phone, street\_number, street\_name, postal\_code, card\_number, admin)\\
+	$t = (result \cap R_{1})+ \cap R_{1}$\\
+	$t =$ (postal\_code)\\
+	result $=$ (postal\_code) $\cup$ (postal\_code)\\
+	result $=$ (postal\_code)\\
+	
+	$R_{2} =$ (postal\_code, city, province)\\
+	$t = (result \cap R_{2})+ \cap R_{2}$\\
+	$t =$ (postal\_code, province, city)\\
+	result $=$ (postal\_code) $\cup$ (postal\_code, province, city)\\
+	result $=$ (postal\_code, province, city)\\
+	
+	Since result contains everything on the RHS of this FD, this dependency is preserved.
+
+\end{enumerate}
+
+\noindent Both dependencies were shown to be preserved after running the dependency preservation algorithm, therefore the decomposition into BCNF for new relations book and region\_order is dependency preserving.\\
+
+\noindent\underline{\emph{publisher}}\\
+
+\noindent 1st FD...\\
+\indent Closure of \emph{name}, (\emph{name})+ = (name, phone, bank\_number, email, street\_number, street\_name, postal\_code)\\
+\indent Since the closure of name includes all attributes in the relation, it means name is a superkey for the relation and it complies with BCNF.\\
+
+\noindent 2nd FD...\\
+\indent Closure of \emph{email}, (\emph{email})+ = (name, phone, bank\_number, email, street\_number, street\_name, postal\_code)\\
+\indent Since the closure of email includes all attributes in the relation, it means email is a superkey for the relation and it complies with BCNF.\\
+
+\noindent Since all FD's for this relation satisfy the conditions for BCNF, this table is already in BCNF. Since the table is already in BCNF and no decomposition was done, all dependencies are preserved.\\
+
+\noindent\underline{\emph{bank\_account}}\\
+
+\noindent 1st FD...\\
+\indent Closure of \emph{bank\_number}, (\emph{bank\_number})+ = (bank\_number, amount)\\
+\indent Since the closure of bank\_number includes all attributes in the relation, it means bank\_number is a superkey for the relation and it complies with BCNF.\\
+
+\noindent Since all FD's for this relation satisfy the conditions for BCNF, this table is already in BCNF. Since the table is already in BCNF and no decomposition was done, all dependencies are preserved.\\
 
 \section{Database Schema Diagram}
 
