@@ -6,7 +6,7 @@ To be done...
 # Project Info
 ## Group Members
 - Nabeel Warsalee - 101103167
-- Hadi
+- Hadi Cheaito    - 101110188
 
 ## Instructor
 Ahmed El-Roby

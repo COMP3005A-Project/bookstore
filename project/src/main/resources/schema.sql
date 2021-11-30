@@ -1,3 +1,11 @@
+create table if not exists region
+  (
+     address_street_postal varchar(10) not null,
+     city                  varchar(30),
+     province              varchar(2),
+     primary key (address_street_postal)
+  );
+
 create table if not exists customer
   (
      email                 varchar(30) not null,
@@ -7,11 +15,10 @@ create table if not exists customer
      address_street_num    varchar(10),
      address_street_name   varchar(255),
      address_street_postal varchar(10),
-     city                  varchar(30),
-     province              varchar(2),
      card_number           varchar(13),
      admin                 boolean,
-     primary key (email)
+     primary key (email),
+     foreign key (address_street_postal) references region
   );
 
 create table if not exists bank_account
@@ -30,19 +37,18 @@ create table if not exists book_order
      address_street_num    varchar(10),
      address_street_name   varchar(255),
      address_street_postal varchar(10),
-     city                  varchar(30),
-     province              varchar(2),
      primary key (order_id),
-     foreign key (email) references customer
+     foreign key (email) references customer,
+     foreign key (address_street_postal) references region
   );
 
 create table if not exists publisher
   (
      name                  varchar(30) not null,
-     phone                 numeric(10, 0),
-     bank_number           numeric(10, 0) not null,
+     phone                 numeric(10),
+     bank_number           numeric(10) not null,
      email                 varchar(30) not null,
-     address_street_num    varchar(30),
+     address_street_num    varchar(10),
      address_street_name   varchar(255),
      address_street_postal varchar(10),
      primary key (name),
@@ -73,4 +79,4 @@ create table if not exists books_in_order
      primary key (order_id, isbn),
      foreign key (order_id) references book_order,
      foreign key (isbn) references book on delete cascade
-  ); 
+  );  
