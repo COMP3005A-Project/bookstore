@@ -10,8 +10,10 @@ import ca.bookstore3005.project.models.Region;
 @Repository
 public interface RegionRepository extends CrudRepository<Region, String> {
 
+
+    // WHERE NOT EXISTS(SELECT * FROM region WHERE address_street_postal = :address_street_postal)
     @Modifying
-    @Query("INSERT INTO region values(:address_street_postal, :city, :province)")
+    @Query("INSERT INTO region values(:address_street_postal, :city, :province) ON CONFLICT DO NOTHING")
     void addRegion(@Param("address_street_postal") String address_street_postal,
                      @Param("city") String city,
                      @Param("province") String province);
