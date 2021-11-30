@@ -2,11 +2,13 @@
 Main project for course COMP3005. Full web application representing a virtual bookstore.
 
 # Instructions for Use
-To be done...
+
+
 # Project Info
 ## Group Members
 - Nabeel Warsalee - 101103167
 - Hadi Cheaito    - 101110188
+- Aaron Buitenwerf - 101106637
 
 ## Instructor
 Ahmed El-Roby
@@ -20,9 +22,11 @@ December 10th, 2021
 - [Thymeleaf](https://www.thymeleaf.org/doc/articles/springmvcaccessdata.html)
 - [Lombok](https://projectlombok.org/features/all)
 - [WET](https://wet-boew.github.io/wet-boew-styleguide/index-en.html)
+- [JQuery](https://jquery.com)
+- [DataTable](https://www.datatables.net)
 
 # Description
-Blah blah describe quickly that this is a bookstore using a relational db.
+This project involves creating a website that acts as a online book store called "Lookinabook". Our project implementation runs on a Spring Boot Web application. Thymeleaf provides the HTML templating, Lombok replaces boilerplate Java code, WET provides the CSS syling for the look of the pages, Jquery simplifies our Javascript code, Datatables provides an API for creating easy tables on our pages. As this is a project for COMP3005 "Database Management Systems", our backend interacts with a PostgreSQL server to store information about Books, Customers, Publishers, and Orders.
 
 # Assumptions Made
 * *list all assumptions made from problem statement*
