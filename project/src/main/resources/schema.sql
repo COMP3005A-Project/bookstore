@@ -25,6 +25,7 @@ create table if not exists bank_account
   (
      bank_number numeric(10, 0) not null,
      amount      numeric(38,2) not null,
+     debt_amount numeric(38,2) not null,
      primary key (bank_number)
   );
 

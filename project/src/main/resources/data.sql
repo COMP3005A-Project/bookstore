@@ -8,14 +8,14 @@ delete from region;
 
 
 /* Inserting bank_accounts */
-insert into bank_account (bank_number, amount)
-	values (1234567891, 890000);
+insert into bank_account (bank_number, amount, debt_amount)
+	values (1234567891, 890000, 43000);
 
-insert into bank_account (bank_number, amount)
-	values (1234567892, 1000000);
+insert into bank_account (bank_number, amount, debt_amount)
+	values (1234567892, 1000000, 68000);
 
-insert into bank_account (bank_number, amount)
-	values (1234567893, 25500);
+insert into bank_account (bank_number, amount, debt_amount)
+	values (1234567893, 25500, 36000);
 
 
 /* Inserting publishers */
