@@ -4,6 +4,7 @@ delete from publisher;
 delete from book_order;
 delete from bank_account;
 delete from customer;
+delete from region;
 
 
 /* Inserting bank_accounts */
@@ -41,12 +42,21 @@ insert into book (ISBN, publisher_name, stock, title, author, year, price, num_p
 insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
 	values ('1234567891237', 'Publisher 3', 13,   'Title 4', 'Author 4', 2020, 125.99, 1123, 0.2123, 'Non-Fiction');
 
+
+/* Inserting into region */
+insert into region (address_street_postal, city, province)
+	values ('K1J6S5', 'Ottawa', 'on');
+	
+insert into region (address_street_postal, city, province)
+	values ('K1J6Y4', 'Toronto', 'on');
+
+
 /* Inserting into user */
 insert into customer (email, password, name, address_street_num, address_street_name, address_street_postal, phone, card_number, admin)
 	values ('test.pilot@gmail.com', 'gaben12', 'Gaben', '123', 'Sesame Street', 'K1J6S5', '6137371111', '123456789012', false);
 
 insert into customer (email, password, name, address_street_num, address_street_name, address_street_postal, phone, admin)
-	values ('admin@gmail.com', 'gaben12', 'Owner', '123', 'Sesame Street', 'K1J634', '6138981111', true);
+	values ('admin@gmail.com', 'gaben12', 'Owner', '123', 'Sesame Street', 'K1J6Y4', '6138981111', true);
 
 
 

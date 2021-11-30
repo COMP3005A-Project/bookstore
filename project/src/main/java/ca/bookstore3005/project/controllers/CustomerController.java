@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,16 +28,20 @@ import ca.bookstore3005.project.models.IsbnPacket;
 import ca.bookstore3005.project.forms.UserForm;
 import ca.bookstore3005.project.models.Customer;
 import ca.bookstore3005.project.services.CustomerService;
+import ca.bookstore3005.project.services.RegionService;
 
 @Controller
 public class CustomerController {
     private CustomerService customerService;
+    @Autowired
+    private RegionService regionService;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     CustomerController(CustomerService customerService) {
       this.customerService = customerService;
     }
+    
   
     @GetMapping(value={"/", "login-page"})
     public ModelAndView loginView(Model model) {
@@ -150,14 +155,15 @@ public class CustomerController {
     @PostMapping("/registration_signup")
     public RedirectView registrationView(@Validated @ModelAttribute("user_register") Customer customer) {
       
-      try {
+     // try {
             customer.setAdmin(false);
+            regionService.addRegion(customer);
             customerService.addCustomer(customer);
-          } 
+        //  } 
       // Checks for duplicates
-      catch (DataIntegrityViolationException e) {
-            return new RedirectView("/registration");
-          }
+     // catch (DataIntegrityViolationException e) {
+          //  return new RedirectView("/registration");
+         // }
       
        return new RedirectView("/");
       
