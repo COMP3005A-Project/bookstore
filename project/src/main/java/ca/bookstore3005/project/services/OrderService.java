@@ -8,14 +8,17 @@ import org.springframework.stereotype.Service;
 import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.models.Order;
 import ca.bookstore3005.project.repositories.OrderRepository;
+import ca.bookstore3005.project.repositories.RegionRepository;
 
 @Service
 public class OrderService {
 
     private OrderRepository orderRepository;
+    private RegionRepository regionRepository;
 
-    OrderService(OrderRepository orderRepository) {
+    OrderService(OrderRepository orderRepository, RegionRepository regionRepository) {
         this.orderRepository = orderRepository;
+        this.regionRepository = regionRepository;
     }
 
     /**
@@ -84,7 +87,10 @@ public class OrderService {
      * @return Id of the newly created order
      */
     public long addOrder(String email, Timestamp date, String shippingId, String streetNum, String streetName, String postal, String city, String province) {
-        return orderRepository.addOrder(email, date, shippingId, streetNum, streetName, postal, city, province);
+        // Save postal separately
+        regionRepository.addRegion(postal, city, province);
+        // Save order
+        return orderRepository.addOrder(email, date, shippingId, streetNum, streetName, postal);
     }
 
     /**

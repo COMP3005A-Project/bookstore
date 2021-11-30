@@ -17,7 +17,7 @@ public class RegionService {
   public void addRegion(Customer customerForm) {
     regionRepository.addRegion(customerForm.getAddress_street_postal(),
                                    customerForm.getCity(), 
-                                   customerForm.getProvince());
+                                   customerForm.getProvince().toUpperCase());
   }
     
 }
