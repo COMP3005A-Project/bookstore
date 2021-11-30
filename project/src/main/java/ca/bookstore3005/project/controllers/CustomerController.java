@@ -155,18 +155,18 @@ public class CustomerController {
     @PostMapping("/registration_signup")
     public RedirectView registrationView(@Validated @ModelAttribute("user_register") Customer customer) {
       
-     // try {
+     try {
             customer.setAdmin(false);
             regionService.addRegion(customer);
             customerService.addCustomer(customer);
-        //  } 
-      // Checks for duplicates
-     // catch (DataIntegrityViolationException e) {
-          //  return new RedirectView("/registration");
-         // }
+          } 
+    //Checks for duplicates
+     catch (DataIntegrityViolationException e) {
+           return new RedirectView("/registration");
+         }
       
        return new RedirectView("/");
-      
+
     }
 
     
