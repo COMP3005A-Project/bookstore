@@ -17,7 +17,7 @@ public interface CustomerRepository extends CrudRepository<Customer, String>{
 
 
   @Modifying
-  @Query("INSERT INTO Customer values(:email, :password, :name, :phone, :address_street_num, :address_street_name, :address_street_postal, :city, :province)")
+  @Query("INSERT INTO Customer values(:email, :password, :name, :phone, :address_street_num, :address_street_name, :address_street_postal, :card_number, :admin)")
   void addCustomer(@Param("name") String name,
                    @Param("email") String email,
                    @Param("password") String password,
@@ -25,8 +25,7 @@ public interface CustomerRepository extends CrudRepository<Customer, String>{
                    @Param("address_street_num") String address_street_num,
                    @Param("address_street_name") String address_street_name,
                    @Param("address_street_postal") String address_street_postal,
-                   @Param("city") String city,
-                   @Param("province") String province,
-                   @Param("card_number") String card_number);
+                   @Param("card_number") String card_number,
+                   @Param("admin") Boolean admin);
 
 }

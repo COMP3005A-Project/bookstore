@@ -45,10 +45,10 @@ insert into book (ISBN, publisher_name, stock, title, author, year, price, num_p
 
 /* Inserting into region */
 insert into region (address_street_postal, city, province)
-	values ('K1J6S5', 'Ottawa', "ON");
+	values ('K1J6S5', 'Ottawa', 'ON');
 	
 insert into region (address_street_postal, city, province)
-	values ('K1J6Y4', 'Toronto', "ON");
+	values ('K1J6Y4', 'Toronto', 'ON');
 
 
 /* Inserting into user */
