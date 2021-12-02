@@ -7,5 +7,30 @@
   <body>
     <div th:replace="fragments/header :: header"></div>
     <h1>Reports</h1>
+
+    <div class="container panel panel-default">
+      <div class="panel-body">
+        <table id="defaultDT" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="publisher: ${publishers}">
+              <td></td>
+              <td th:text="${publisher.name}"></td>
+              <td><a th:href="@{/report(publisher=${publisher.name})}" th:text="${publisher.name}"></a></td>
+              <td th:text="${publisher.email}"></td>
+              <td th:text="${publisher.phone}"></td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>  
   </body>
 </html>

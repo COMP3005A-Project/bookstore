@@ -48,7 +48,6 @@ public class BookController {
 
     model.addAttribute("allBooks", books);
     model.addAttribute("module", "shop");
-    model.addAttribute("isAuthenticated", true);
 
     @SuppressWarnings("unchecked")
     List<String> cart = (List<String>) session.getAttribute("cart");
