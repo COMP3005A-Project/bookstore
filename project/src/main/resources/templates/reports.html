@@ -3,6 +3,7 @@
   <head>
     <div th:replace="fragments/scripts :: scripts"></div>
     <title>Look Inna Book</title>
+    <script src="js/defaultDT.js"></script>
   </head>
   <body>
     <div th:replace="fragments/header :: header"></div>
@@ -13,7 +14,6 @@
         <table id="defaultDT" class="display" style="width:100%">
           <thead>
             <tr>
-              <th></th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
@@ -21,8 +21,6 @@
           </thead>
           <tbody>
             <tr th:each="publisher: ${publishers}">
-              <td></td>
-              <td th:text="${publisher.name}"></td>
               <td><a th:href="@{/report(publisher=${publisher.name})}" th:text="${publisher.name}"></a></td>
               <td th:text="${publisher.email}"></td>
               <td th:text="${publisher.phone}"></td>
