@@ -81,3 +81,57 @@ create table if not exists books_in_order
      foreign key (order_id) references book_order,
      foreign key (isbn) references book on delete cascade
   );  
+
+/* SQL TRIGGERS FOR RESTOCK */
+/* DROP TRIGGER AND LOAD FRESH ONE*/
+DROP TRIGGER IF EXISTS check_stock_levels ON book;
+
+/* TRIGGER FUNCTION DEFINITION */
+CREATE OR REPLACE FUNCTION restock_book() RETURNS trigger AS
+   '
+   BEGIN
+        IF NEW.stock < 10 THEN
+            UPDATE book SET stock = stock + 15 WHERE isbn = NEW.isbn;
+        END IF;
+        
+        RETURN NEW;
+    END;'
+    LANGUAGE plpgsql;
+
+/* TRIGGER STATEMENT */
+CREATE TRIGGER check_stock_levels AFTER UPDATE 
+   ON book FOR EACH ROW 
+   EXECUTE PROCEDURE restock_book();
+
+/* SQL FUNCTIONS FOR REPORTS*/
+/* Sales/Author */
+CREATE OR REPLACE FUNCTION sales_per_author(pname varchar) 
+    RETURNS table ( category varchar,
+                    total numeric(8,2))
+    AS
+      '
+        BEGIN
+            return query
+                select author, sum(price * percent_to_publisher)
+                from (select *
+                      from books_in_order join book using(isbn)
+                      where publisher_name = pname) as ordered_books
+                group by author;
+    END;'
+    LANGUAGE plpgsql;
+
+/* Sales/Genre */
+CREATE OR REPLACE FUNCTION sales_per_genre(pname varchar) 
+    RETURNS table ( category varchar,
+                    total numeric(8,2))
+    AS
+      ' 
+        BEGIN
+            return query
+                select genre, sum(price * percent_to_publisher)
+                from (select *
+                      from books_in_order join book using(isbn)
+                      where publisher_name = pname) as ordered_books
+                group by genre;
+    END;'
+    LANGUAGE plpgsql;
