@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import ca.bookstore3005.project.models.Publisher;
 import ca.bookstore3005.project.repositories.PublisherRepository;
-
+import ca.bookstore3005.project.models.BankAccount;
 import ca.bookstore3005.project.models.Book;
 import ca.bookstore3005.project.repositories.BankAccountRepository;
 
@@ -32,6 +32,15 @@ public class PublisherService {
      */
     public List<Publisher> getAllPublishers() {
       return publisherRepository.findAllPublishers();
+    }
+
+    /**
+     * Retrieves all Publishers from the database via the repository class
+     * Formats the data into Publisher objects
+     * @return the combined list of Publisher objects
+     */
+    public BankAccount getPublisherBankAccount(String publisherName) {
+        return bankAccountRepository.findBankAccountByName(publisherName);
     }
 
     /**

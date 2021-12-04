@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <div th:replace="fragments/scripts :: scripts"></div>
+  <script src="js/defaultDT.js"></script>
+  <title>Look Inna Book</title>
+</head>
+
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4 class="panel-title" th:text="${'Reports for ' + publisherName}"></h4>
+        <br>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h5 class="panel-title">Sales vs Expenditures</h5>
+            <div>Bank Number: <strong><span th:text="${publisher.bank_number}"></span></strong></div>
+            <br>
+            <div>Total cash: <strong><span th:text="${#numbers.formatDecimal(publisher.amount, 0, 'COMMA', 2, 'POINT')}"></span></strong></div>
+            <div>Expenses: <strong><span th:text="${#numbers.formatDecimal(publisher.debt_amount, 0, 'COMMA', 2, 'POINT')}"></span></strong></div>
+            <br>
+            <div>Margin: <strong><span th:text="${#numbers.formatDecimal(margin, 0, 'COMMA', 2, 'POINT')}"></span></strong></div>
+            <div>Ratio Sales/Expenses: <strong><span th:text="${#numbers.formatDecimal(ratio, 0, 'COMMA', 2, 'POINT')}"></span></strong></div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h5 class="panel-title">Authors vs Sales</h5>
+            <table id="cartDT" class="display" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Author</th>
+                  <th>Sales ($)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="entry: ${authorReport}">
+                  <td th:text="${entry.category}"></td>
+                  <td th:text="${#numbers.formatDecimal(entry.total, 0, 'COMMA', 2, 'POINT')}"></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h5 class="panel-title">Genres vs Sales</h5>
+            <table id="cartDT" class="display" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Genre</th>
+                  <th>Sales ($)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="entry: ${genreReport}">
+                  <td th:text="${entry.category}"></td>
+                  <td th:text="${#numbers.formatDecimal(entry.total, 0, 'COMMA', 2, 'POINT')}"></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <a href="/reports">
+          <button type="button" class="btn btn-primary">Back to all reports</button>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+
+</body>
+
+</html>
