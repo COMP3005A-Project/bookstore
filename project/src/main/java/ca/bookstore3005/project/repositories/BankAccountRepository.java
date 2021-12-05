@@ -15,6 +15,9 @@ public interface BankAccountRepository extends CrudRepository<BankAccount, Strin
     @Query("SELECT * FROM bank_account WHERE bank_number = :bank_number")
     BankAccount findBankAccount(@Param("bank_number") long bank_number);
 
+    @Query("SELECT bank_number, amount, debt_amount FROM publisher JOIN bank_account USING(bank_number) WHERE publisher.name = :publisherName")
+    BankAccount findBankAccountByName(@Param("publisherName") String publisherName);
+
     @Query("SELECT * FROM bank_account")
     List<BankAccount> findAllBankAccounts();
 
