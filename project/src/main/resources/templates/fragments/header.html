@@ -31,7 +31,7 @@
           <ul th:if="${session.is_admin != null and session.is_admin}" class="nav navbar-nav">
             <li th:classappend="${module == 'shop' ? 'active' : ''}">
               <a href="#" th:href="@{/books}">
-                Shop
+                Manage Books
               </a>
             </li>
             <li th:classappend="${module == 'reports' ? 'active' : ''}">
