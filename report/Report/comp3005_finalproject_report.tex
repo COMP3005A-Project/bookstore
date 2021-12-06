@@ -33,15 +33,23 @@ The group for this project consists of the following members...\\
 
 \noindent\underline{\textbf{Group Members}}
 \begin{itemize}
-	\item Aaron Buitenwerf ()
-	\item Hadi Cheaito ()
+	\item Aaron Buitenwerf (101106637)
+	\item Hadi Cheaito (101110188)
 	\item Nabeel Warsalee (101103167)
 \end{itemize}
 
 \noindent All project files and source code can be found at the following \href{https://github.com/COMP3005A-Project/bookstore}{Github repository}...
 
 \section{Conceptual Design}
-Insert preamble about design.\\
+For the design of this database, we took a straightforward approach and attempted to keep it as simple as we could. We created four main entities that compose the bulk of what the program requires. There are then relationships and minor entities that help provide more information for our main entities while also avoiding redundancy.\\
+
+\noindent The book entity contains all the information regarding the books in our system. The primary key for this entity is the isbn number. The book entity forms relationships with the publisher entity, via the relationship of a book being published by a given publisher and is also connected to the order relation via the relationship books\_in\_order.\\
+
+\noindent The publisher entity contains all the information regarding the publishers in our system. The primary key for this entity is the name of the publisher. The publisher entity forms relationships with the book entity as mentioned earlier and is also connected to the bank\_account relation via the relationship account\_of.\\
+
+\noindent The order entity contains all the information regarding the book orders in our system. The primary key for this entity is the order id. The order entity forms relationships with the book entity as mentioned earlier via the books\_in\_order relationship and is also connected to the customer relation via the relationship order\_of.//
+
+\noindent Finally there is the customer entity which contains all the information regarding the customers in our system. The primary key for this entity is the email of the user. The customer entity forms relationships with the order entity as mentioned earlier via the order\_of relationship.\\
 
 \noindent\underline{\textbf{Assumptions Made}}\\
 In this section we list all the assumptions that were made for certain aspects of the problem statement. These assumptions reflect how we designed and organized our database for this project.
@@ -49,9 +57,10 @@ In this section we list all the assumptions that were made for certain aspects o
 \begin{itemize}
 	\item A book can only have one publisher
 	\item All books with same title have the same ISBN
-	\item Assume an order can only have one of the same book (i.e., user cannot buy two copies of the same book)
+	\item Assume an order can only have one of the same book (i.e., user cannot buy two copies of the same book in one order)
 	\item Each publisher has only one bank account
-	\item There is only one report made per publisher
+	\item There is only one set of reports made per publisher
+	\item Tracking information for an order is just its shipping id
 \end{itemize}
 
 \noindent\underline{\textbf{ER Diagram}}\\
@@ -67,7 +76,7 @@ book(\underline{isbn}, title, author, genre, year, price, num\_pages, publisher\
 \indent books\_in\_order(\underline{order\_id}, \underline{isbn}, amount)\\
 \indent customer(\underline{email}, password, name, phone, street\_number, street\_name, postal\_code, city, province, card\_number, admin)\\
 \indent publisher(\underline{name}, phone, bank\_number, email, street\_number, street\_name, postal\_code)\\
-\indent bank\_account(\underline{bank\_number}, amount)\\
+\indent bank\_account(\underline{bank\_number}, amount, debt\_amount)\\
 
 \section{Normalization of Relation Schemas}
 
@@ -100,7 +109,7 @@ name $\rightarrow$ email, phone, bank\_number, street\_number, street\_name, pos
 
 \noindent\emph{bank\_account}
 
-bank\_number $\rightarrow$ amount\\
+bank\_number $\rightarrow$ amount, debt\_amount\\
 
 \noindent\underline{\textbf{Good Normal Form Check and Decomposition}}\\
 
@@ -283,15 +292,56 @@ customer(\underline{email}, password, name, phone, street\_number, street\_name,
 \noindent\underline{\emph{bank\_account}}\\
 
 \noindent 1st FD...\\
-\indent Closure of \emph{bank\_number}, (\emph{bank\_number})+ = (bank\_number, amount)\\
+\indent Closure of \emph{bank\_number}, (\emph{bank\_number})+ = (bank\_number, amount, debt\_amount)\\
 \indent Since the closure of bank\_number includes all attributes in the relation, it means bank\_number is a superkey for the relation and it complies with BCNF.\\
 
 \noindent Since all FD's for this relation satisfy the conditions for BCNF, this table is already in BCNF. Since the table is already in BCNF and no decomposition was done, all dependencies are preserved.\\
+
+\noindent\underline{\textbf{Results of Normalization}}\\
+Since both the customer and order relations decomposed with a new relation called region\_customer and region\_order, we can merge the two together to create a new relation called region that both the customer and order relations will refer to. As such, this would be the updated ER diagram to show the new entities and relationships created by this new relation.\\
+
+\includegraphics[scale=0.4]{../Diagrams/ER-diagram-bookstore-comp3005-finalproject-after-normalization.drawio.png}\\
 
 \section{Database Schema Diagram}
 
 The following is the Schema Diagram created to model schemas gained from our ER diagram and after normalization.\\
 
-\includegraphics[scale=0.5]{../Diagrams/Schema-diagram-comp3005-finalproject.drawio.png}\\
+\includegraphics[scale=0.5]{../Diagrams/Schema-diagram-comp3005-finalproject-after-normalization.drawio.png}\\
+
+\section{Implementation}
+\underline{\textbf{Implementation Design}}
+In this section we will briefly mention how we implemented certain features of our bookstore and what SQL elements were used to achieve this.\\
+
+For our orders, the primary key that is used for the order relation is the order\_id. The order\_id is created immediately upon the creation of a new order into the table. We achieved this by making use of the "serial" datatype in our table.\\
+
+Regarding the book stock, whenever the book's stock level goes below a certain threshold (ex. in our case we set it to below 10 books), an order needs to be placed to restock the books inventory. To achieve this, we implemented an SQL trigger on the book relation that activates whenever on stock of a book goes below 10. The trigger performs this check whenever a book entry is updated.\\
+
+For publisher reports, we supported three different types of reports. Sales vs Expenditures (which is just amount in bank\_account vs debt\_amount), Sales vs Authors and Sales vs Genres. For the last two reports, we implemented SQL functions that would return us a table with Authors/Genres and Sales for those given authors or genres. The function takes in a varchar argument that is the name of the publisher to retrieve the results for. Whenever a user requests to see the reports page for a specific publisher, we call those functions and pass in the specific publisher as the name. We also thought of using a view to do this, however we chose the route of SQL functions.\\
+
+\underline{\textbf{Implementation Tour}}\\
+The following are a few screen shots showing what the user and owner would see when browsing the website.\\
+
+\noindent\emph{Customer Perspective}\\
+\includegraphics[scale=0.5]{../Images/user_book_page.png}\\
+
+\noindent\emph{Owner Perspective}\\
+\includegraphics[scale=0.5]{../Images/owner_book_page.png}\\
+
+\noindent\underline{Video Tour}\\
+The following is a video tour of the bookstore website. It walks through all the main features of the bookstore and demonstrates specific functionality mentioned in the problem statement.\\
+
+\noindent\href{https://www.youtube.com/}{View video here...}\\
+EDIT THIS!!!\\
+
+\section{Github Repository}
+\noindent All project files and source code can be found at the following \href{https://github.com/COMP3005A-Project/bookstore}{Github repository}...
+
+\section{Appendix I}
+Below are a list of three available time slots for December 18th 2021 (one day after the "implied" due date of Dec 17th 2021), for possible project demonstrations...
+\begin{itemize}
+	\item 11:00AM - 11:20AM
+	\item 12:00PM - 12:20PM
+	\item 01:00PM - 01:20PM
+\end{itemize}
 
 \end{document}
