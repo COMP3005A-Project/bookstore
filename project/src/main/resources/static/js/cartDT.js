@@ -6,7 +6,7 @@ $(document).ready(function() {
       targets:   0
     } ],
     select: {
-      style:    'os',
+      style:    'multi',
       selector: 'td:first-child'
     },
     order: [[ 1, 'asc' ]],
