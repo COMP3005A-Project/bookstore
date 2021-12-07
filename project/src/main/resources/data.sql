@@ -20,27 +20,33 @@ insert into bank_account (bank_number, amount, debt_amount)
 
 /* Inserting publishers */
 insert into publisher (name, phone, bank_number, email, address_street_num, address_street_name, address_street_postal)
-	values ('Publisher 1', 6131234567, 1234567891, 'publisher1@gmail.com', 89, 'Topoly Dr.', 'L1P9V5');
+	values ('Pearson', 1300473277, 1234567891, 'pearson@gmail.com', 330, 'Hudson', 'L1P9V5');
 
 insert into publisher (name, phone, bank_number, email, address_street_num, address_street_name, address_street_postal)
-	values ('Publisher 2', 6131234568, 1234567892, 'publisher2@gmail.com', 64, 'Hammer Cres.', 'J5G9T1');
+	values ('Bloomsbury Publishing', 6131234568, 1234567892, 'onlinesales@bloomsburyprofessional.com', 64, 'Hammer Cres.', 'J5G9T1');
 
 insert into publisher (name, phone, bank_number, email, address_street_num, address_street_name, address_street_postal)
-	values ('Publisher 3', 6131234569, 1234567893, 'publisher3@gmail.com', 12, 'Ogilive', 'V9W7D9');
+	values ('Scholastic Corp.', 18002683860, 1234567893, 'scholastic@gmail.com', 175, 'Hillmount Rd.', 'L6C1Z7');
 
 
 /* Inserting books */
 insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
-	values ('1234567891234', 'Publisher 1', 3,   'Title 1', 'Author 1', 2000, 12.99, 123, 0.1050, 'Horror');
+	values ('9780439784542', 'Bloomsbury Publishing', 32,   'Half-Blood Prince', 'J.K. Rowling', 2005, 18.99, 607, 0.1050, 'Fantasy');
 
 insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
-	values ('1234567891235', 'Publisher 1', 1,   'Title 2', 'Author 2', 2012, 16.99, 250, 0.1550, 'Fiction');
+	values ('9780545010221', 'Bloomsbury Publishing', 10,   'Deathly Hallows', 'J.K. Rowling', 2007, 18.99, 607, 0.1550, 'Fantasy');
 
 insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
-	values ('1234567891236', 'Publisher 2', 6,   'Title 3', 'Author 3', 1990, 34.99, 189, 0.0570, 'Sci-Fi');
+	values ('9780137464401', 'Pearson', 16,   'Code That Fits in Your Head', 'Mark Seemann', 2021, 34.99, 189, 0.0570, 'Education');
 
 insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
-	values ('1234567891237', 'Publisher 3', 13,   'Title 4', 'Author 4', 2020, 125.99, 1123, 0.2123, 'Non-Fiction');
+	values ('9781459814325', 'Pearson', 11,   'The Magic Boat', 'Katherine Farris & Kit Pearson', 2019, 8.99, 12, 0.0570, 'Fiction');
+
+insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
+	values ('9780439023498', 'Scholastic Corp.', 40,   'Catching Fire', 'Suzzane Collins', 2009, 15.99, 391, 0.2123, 'Adventure');
+
+insert into book (ISBN, publisher_name, stock, title, author, year, price, num_pages, percent_to_publisher, genre)
+	values ('9780545917148', 'Scholastic Corp.', 25,   'The Bad Guys', 'Aaron Blabey', 2015, 11.99, 144, 0.2123, 'Fiction');
 
 
 /* Inserting into region */

@@ -8,10 +8,10 @@ create table if not exists region
 
 create table if not exists customer
   (
-     email                 varchar(30) not null,
+     email                 varchar(255) not null,
      password              varchar(30) not null,
-     name                  varchar(30) not null,
-     phone                 varchar(10),
+     name                  varchar(255) not null,
+     phone                 varchar(11),
      address_street_num    varchar(10),
      address_street_name   varchar(255),
      address_street_postal varchar(10),
@@ -32,7 +32,7 @@ create table if not exists bank_account
 create table if not exists book_order
   (
      order_id    serial unique,
-     email       varchar(30) not null,
+     email       varchar(255) not null,
      shipping_id varchar(12),
      date        timestamp not null,
      address_street_num    varchar(10),
@@ -45,10 +45,10 @@ create table if not exists book_order
 
 create table if not exists publisher
   (
-     name                  varchar(30) not null,
-     phone                 numeric(10),
+     name                  varchar(255) not null,
+     phone                 numeric(11),
      bank_number           numeric(10) not null,
-     email                 varchar(30) not null,
+     email                 varchar(255) not null,
      address_street_num    varchar(10),
      address_street_name   varchar(255),
      address_street_postal varchar(10),
