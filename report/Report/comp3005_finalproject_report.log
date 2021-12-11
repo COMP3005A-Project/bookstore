@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.20)  6 DEC 2021 10:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.20)  10 DEC 2021 20:15
 entering extended mode
 **./comp3005_finalproject_report.tex
 (comp3005_finalproject_report.tex
@@ -1301,7 +1301,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 330--332
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--335
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
@@ -1318,7 +1318,7 @@ Here is how much of TeX's memory you used:
  40138 multiletter control sequences out of 15000+600000
  407384 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,6n,108p,733b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,6n,108p,743b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\warsn\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk><C:/Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -1332,7 +1332,7 @@ sn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/
 Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10
 .pfb><C:/Users/warsn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmti10.pfb>
-Output written on comp3005_finalproject_report.pdf (11 pages, 282290 bytes).
+Output written on comp3005_finalproject_report.pdf (11 pages, 282703 bytes).
 PDF statistics:
  165 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)

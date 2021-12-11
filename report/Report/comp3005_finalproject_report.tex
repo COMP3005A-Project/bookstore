@@ -38,7 +38,7 @@ The group for this project consists of the following members...\\
 	\item Nabeel Warsalee (101103167)
 \end{itemize}
 
-\noindent All project files and source code can be found at the following \href{https://github.com/COMP3005A-Project/bookstore}{Github repository}...
+\noindent All project files and source code can be found at the following Github repository:\\ \href{https://github.com/COMP3005A-Project/bookstore}{https://github.com/COMP3005A-Project/bookstore}...
 
 \section{Conceptual Design}
 For the design of this database, we took a straightforward approach and attempted to keep it as simple as we could. We created four main entities that compose the bulk of what the program requires. There are then relationships and minor entities that help provide more information for our main entities while also avoiding redundancy.\\
@@ -309,16 +309,16 @@ The following is the Schema Diagram created to model schemas gained from our ER 
 \includegraphics[scale=0.5]{../Diagrams/Schema-diagram-comp3005-finalproject-after-normalization.drawio.png}\\
 
 \section{Implementation}
-\underline{\textbf{Implementation Design}}
+\underline{\textbf{Implementation Design}}\\
 In this section we will briefly mention how we implemented certain features of our bookstore and what SQL elements were used to achieve this.\\
 
-For our orders, the primary key that is used for the order relation is the order\_id. The order\_id is created immediately upon the creation of a new order into the table. We achieved this by making use of the "serial" datatype in our table.\\
+\noindent For our orders, the primary key that is used for the order relation is the order\_id. The order\_id is created immediately upon the creation of a new order into the table. We achieved this by making use of the "serial" datatype in our table.\\
 
-Regarding the book stock, whenever the book's stock level goes below a certain threshold (ex. in our case we set it to below 10 books), an order needs to be placed to restock the books inventory. To achieve this, we implemented an SQL trigger on the book relation that activates whenever on stock of a book goes below 10. The trigger performs this check whenever a book entry is updated.\\
+\noindent Regarding the book stock, whenever the book's stock level goes below a certain threshold (ex. in our case we set it to below 10 books), an order needs to be placed to restock the books inventory. To achieve this, we implemented an SQL trigger on the book relation that activates whenever on stock of a book goes below 10. The trigger performs this check whenever a book entry is updated.\\
 
-For publisher reports, we supported three different types of reports. Sales vs Expenditures (which is just amount in bank\_account vs debt\_amount), Sales vs Authors and Sales vs Genres. For the last two reports, we implemented SQL functions that would return us a table with Authors/Genres and Sales for those given authors or genres. The function takes in a varchar argument that is the name of the publisher to retrieve the results for. Whenever a user requests to see the reports page for a specific publisher, we call those functions and pass in the specific publisher as the name. We also thought of using a view to do this, however we chose the route of SQL functions.\\
+\noindent For publisher reports, we supported three different types of reports. Sales vs Expenditures (which is just amount in bank\_account vs debt\_amount), Sales vs Authors and Sales vs Genres. For the last two reports, we implemented SQL functions that would return us a table with Authors/Genres and Sales for those given authors or genres. The function takes in a varchar argument that is the name of the publisher to retrieve the results for. Whenever a user requests to see the reports page for a specific publisher, we call those functions and pass in the specific publisher as the name. We also thought of using a view to do this, however we chose the route of SQL functions.\\
 
-\underline{\textbf{Implementation Tour}}\\
+\noindent \underline{\textbf{Implementation Tour}}\\
 The following are a few screen shots showing what the user and owner would see when browsing the website.\\
 
 \noindent\emph{Customer Perspective}\\
@@ -328,13 +328,13 @@ The following are a few screen shots showing what the user and owner would see w
 \includegraphics[scale=0.5]{../Images/owner_book_page.png}\\
 
 \noindent\underline{Video Tour}\\
-The following is a video tour of the bookstore website. It walks through all the main features of the bookstore and demonstrates specific functionality mentioned in the problem statement.\\
+The following is a video tour of the bookstore website. It walks through how to steup the application and shows all the main features of the bookstore. Also demonstrates specific functionality mentioned in the problem statement.\\
 
-\noindent\href{https://www.youtube.com/}{View video here...}\\
-EDIT THIS!!!\\
+\noindent Video: \href{https://www.youtube.com/}{https://www.youtube.com/watch?v=h2ba-dRP-qU}\\
 
 \section{Github Repository}
-\noindent All project files and source code can be found at the following \href{https://github.com/COMP3005A-Project/bookstore}{Github repository}...
+\noindent All project files and source code can be found at the following Github repository: \\
+\href{https://github.com/COMP3005A-Project/bookstore}{https://github.com/COMP3005A-Project/bookstore}
 
 \section{Appendix I}
 Below are a list of three available time slots for December 18th 2021 (one day after the "implied" due date of Dec 17th 2021), for possible project demonstrations...
