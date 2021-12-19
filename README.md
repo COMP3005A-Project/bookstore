@@ -12,12 +12,6 @@ Main project for course COMP3005. Full web application representing a virtual bo
 ```mvn spring-boot:run```
 5. Go to http://localhost:8080 on a web browser
 
-## Video
-Below is a link to a video tour that walks through all features of this project.
-This video also includes instructions on how to setup the project.
-
-https://www.youtube.com/watch?v=h2ba-dRP-qU
-
 Alternatively and faster (if VS code is installed)
 1. Install the Spring Boot Dashboard plugin for VS code
 2. Find the Spring application on the left under the dashboard and press play button
@@ -28,6 +22,11 @@ Notes for usage:
     username: admin@gmail.com  
     password: gaben12
    
+## Video
+Below is a link to a video tour that walks through all features of this project.
+This video also includes instructions on how to setup the project.
+
+https://www.youtube.com/watch?v=h2ba-dRP-qU
 
 # Project Info
 ## Group Members
